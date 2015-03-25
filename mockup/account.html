@@ -1,0 +1,197 @@
+    <!DOCTYPE html>
+    <html>
+    <head lang="en">
+      <meta charset="UTF-8">
+      <title>User Account</title>
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+      <!--  Load site-specific customizations after bootstrap. -->
+      <link rel="stylesheet" href="style.css">
+
+    </head>
+
+    <body>
+
+    <!-- Responsive navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <!--  Display three horizontal lines when navbar collapsed. -->
+            <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">
+            <i class="fa fa-bullhorn fa-2x">&nbsp;&nbsp;&nbsp;Notify Hawai'i</i>
+          </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav pull-right">
+            <li><a href="services.html">Services</a></li>
+            <li><a href="index.html">Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Begin Preferences Section -->
+    <div class="container">
+      <h2>Contact Information</h2>
+      <div class="container">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>Enter you contact information here.<br>
+              Make sure its up-to-date; this is how we'll notify you.</h4>
+          </div>
+          <div class="panel-body">
+            <form class="form-horizontal">
+            <div id="contactDetails">
+
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label" style="text-align: left;">Name:</label>
+                <div class="col-sm-9">
+                  <input id="userName"
+                         name="userName"
+                         type="name"
+                         class="form-control"
+                         value="Rob Namahoe">
+                </div>
+              </div>
+
+            <div class="form-group">
+            <label class="col-sm-3 control-label" style="text-align: left;">Email:</label>
+            <div class="col-sm-9">
+              <input id="userEmail"
+                     name="userEmail"
+                     type="email"
+                     class="form-control"
+                     value="rnamahoe@hawaii.edu"
+                     placeholder="user@hawaii.edu">
+            </div>
+          </div>
+          <div class="form-group">
+          <label class="col-sm-3 control-label" style="text-align: left;">Mobile phone #:</label>
+          <div class="col-sm-9">
+            <input id="userPhone"
+                   name="userPhone"
+                   type="text"
+                   class="form-control"
+                   value="808-123-4567"
+                   placeholder="808-123-4567">
+          </div>
+        </div>
+        <div class="form-group">
+        <label class="col-sm-3 control-label" style="text-align: left;">Service Provider: </label>
+        <div class="col-sm-9">
+          <select id="userCarrier" name="userCarrier" class="form-control">
+            <option id="AT&T Wireless" value="AT&T Wireless">AT&T Wireless</option>
+            <option id="Alltel Wireless" value="Alltel Wireless">Alltel Wireless</option>
+            <option id="AT&T Mobility (formerly Cingular)" value="AT&T Mobility (formerly Cingular)">
+            AT&T Mobility (formerly Cingular)</option>
+            <option id="Boost Mobile" value="Boost Mobile">Boost Mobile</option>
+            <option id="Cricket" value="Cricket">Cricket</option>
+            <option id="Metro PCS" value="Metro PCS">Metro PCS</option>
+            <option id="Sprint (PCS)" value="Sprint (PCS)">Sprint (PCS)</option>
+            <option id="Sprint (Nextel)" value="Sprint (Nextel)">Sprint (Nextel)</option>
+            <option id="Straight Talk" value="Straight Talk">Straight Talk</option>
+            <option id="T-Mobile" value="T-Mobile">T-Mobile</option>
+            <option id="U.S. Cellular" value="U.S. Cellular">U.S. Cellular</option>
+            <option id="Verizon" value="Verizon">Verizon</option>
+            <option id="Virgin Mobile" value="Virgin Mobile"> Virgin Mobile</option>
+          </select>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-10">
+        <button type="submit" class="btn btn-success btn-sm">Save Changes</button>
+      </div>
+    </div>
+
+    </div></form></div></div></div></div>
+
+    <!-- End Preferences Section -->
+
+
+    <!-- Begin Preferences Section -->
+    <div class="container">
+      <h2>Notification Preferences</h2>
+
+      <div class="container">
+        <table class="table table-bordered table-striped">
+          <tr>
+            <th>Service</th>
+            <th>Notify When</th>
+            <th>Notify By</th>
+            <th>Options</th>
+          </tr>
+          <tr>
+            <td>Honolulu Star Advertiser Breaking News</td>
+            <td>Each Morning</td>
+            <td>Email</td>
+            <td>
+              <a class="btn btn-primary btn-xs" data-toggle="modal" href="#">
+                <div class="glyphicon glyphicon-pencil"></div> Edit
+              </a>&nbsp;&nbsp;
+              <a class="btn btn-danger btn-xs" data-toggle="modal" href="#">
+                <div class="glyphicon glyphicon-remove"></div> Remove
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>Google Maps</td>
+            <td>Commute is greater than 45 minutes</td>
+            <td>Text Message</td>
+            <td>
+              <a class="btn btn-primary btn-xs" data-toggle="modal" href="#">
+                <div class="glyphicon glyphicon-pencil"></div> Edit
+              </a>&nbsp;&nbsp;
+              <a class="btn btn-danger btn-xs" data-toggle="modal" href="#">
+                <div class="glyphicon glyphicon-remove"></div> Remove
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>The BUS Express A</td>
+            <td>Running early or late</td>
+            <td>Text Message</td>
+            <td>
+              <a class="btn btn-primary btn-xs" data-toggle="modal" href="#">
+                <div class="glyphicon glyphicon-pencil"></div> Edit
+              </a>&nbsp;&nbsp;
+              <a class="btn btn-danger btn-xs" data-toggle="modal" href="#">
+                <div class="glyphicon glyphicon-remove"></div> Remove
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>Word Press: Rob C. Namahoe</td>
+            <td>New Blog Post</td>
+            <td>Email</td>
+            <td>
+              <a class="btn btn-primary btn-xs" data-toggle="modal" href="#">
+                <div class="glyphicon glyphicon-pencil"></div> Edit
+              </a>&nbsp;&nbsp;
+              <a class="btn btn-danger btn-xs" data-toggle="modal" href="#">
+                <div class="glyphicon glyphicon-remove"></div> Remove
+              </a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a href="https://github.com/RobNamahoe/NotifyHawaii"><i class="fa fa-github-square fa-3x"></i></a>
+      <a href="mailto:rnamahoe@hawaii.edu"><i class="fa fa-envelope-o fa-3x"></i></a>
+      <a href="https://www.facebook.com/"><i class="fa fa-facebook fa-3x"></i></a>
+      <a href="https://twitter.com/"><i class="fa fa-twitter-square fa-3x"></i></a>
+    </div>
+
+    <!-- Load Bootstrap JavaScript components -->
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+  </body>
+  </html>
