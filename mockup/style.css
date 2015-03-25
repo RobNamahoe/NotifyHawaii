@@ -33,6 +33,22 @@ body {
   height: 400px;
 }
 
+.block-text-left {
+  padding-top: 5em;
+  padding-right: 7em;
+  font-size: 36px;
+  color: black;
+  text-align: center;
+}
+
+
+.block-text-right {
+  padding-top: 5em;
+  padding-left: 7em;
+  font-size: 36px;
+  color: black;
+  text-align: center;
+}
 
 .colorblock-blue {
   background-color: #557EAB;
