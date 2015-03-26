@@ -6,7 +6,7 @@ The goal of this application is to keep the user informed of specific events so 
 
 Approach
 --------
-Registered users will be able to select from a predetermined set of services. Each service will allow for notifications to be sent to the user via email or text message when specific events are triggered (such as a new blog entry or a specific bus running ahead of/behind schedule). The triggering events will be monitored through the use of a variety of services including Google Maps, TheBus Web Services API, and Jaunt Web Scraper.
+Registered users will be able to select from a predetermined set of services. Each service will allow for notifications to be sent to the user via email or text message when specific events are triggered (such as a new blog entry or a specific bus running ahead of/behind schedule). The triggering events will be monitored through the use of a variety of services including Google Maps, TheBus Web Services API, and Jaunt Web Scraping and Automation tool.
 
 This application will be built using HTML, CSS, Twitter Bootstrap and the Play Web Application Framework. The backend database will be implemented using PostgreSQL and the entire application will be deployed to Heroku. 
 
