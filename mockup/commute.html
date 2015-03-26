@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>User Account</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <!--  Load site-specific customizations after bootstrap. -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- Responsive navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <!--  Display three horizontal lines when navbar collapsed. -->
+        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">
+        <i class="fa fa-bullhorn fa-2x">&nbsp;&nbsp;&nbsp;Notify Hawai'i</i>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav pull-right">
+        <li><a href="account.html">My Account</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="index.html">Sign Out</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h1>Commute Services</h1>
+
+  <! -- Google Maps -->
+  <div class="panel panel-default">
+
+    <!-- Default panel contents -->
+    <div class="leftaligned-image">
+      <img src="http://users.tpg.com.au/barbieq/homepages/aussiesearchimages/Google%20maps%20Logo.png">
+    </div>
+
+    <!-- Table -->
+    <table class="table">
+      <col width="55%">
+      <col width="50%">
+      <tr>
+        <td>
+          <img src="route.png">
+        </td>
+        <td>
+          <form>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> <strong>Subscribe!</strong>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="startingLocation">Starting Location</label>
+              <input type="text" class="form-control" id="startingLocation" value="UH Manoa">
+            </div>
+            <div class="form-group">
+              <label for="destination">Destination</label>
+              <input type="text" class="form-control" id="destination" value="Home">
+            </div>
+            <div class="form-group">
+              <label for="destination">Notify By:</label>
+              <input type="text" class="form-control" id="destination" value="Text">
+            </div>
+
+            <div class="form-group">
+              <label for="destination">Notify At:</label>
+              <input type="text" class="form-control" id="destination" value="1700">
+            </div>
+
+            <div class="form-group">
+              <label for="destination">If Commute is greater than:</label>
+              <input type="text" class="form-control" id="destination" value="45 minutes">
+            </div>
+
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+  <! -- TheBus -->
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="leftaligned-image">
+      <img src="http://upload.wikimedia.org/wikipedia/en/7/73/Thebushonolululogo.gif">
+    </div>
+
+    <!-- Table -->
+    <table class="table">
+      <col width="30">
+      <col width="25%">
+      <col width="15%">
+      <col width="10%">
+      <col width="10%">
+      <tr>
+        <th>Service</th>
+        <th>Route</th>
+        <th>Stop Number</th>
+        <th>Arrival</th>
+        <th>Time</th>
+      </tr>
+      <tr>
+        <td>Watched Route 1</td>
+        <td>
+          <select id="route" name="route" class="form-control">
+            <option>Route A</option>
+            <option>Route C</option>
+            <option>Route E</option>
+            <option>Route 1 and 1L</option>
+            <option>Route 2 and 2L</option>
+            <option>Route 3</option>
+            <option>Route 4</option>
+            <option>Route 5</option>
+            <option>Route 6</option>
+            <option>Route 7</option>
+            <option>Route 8</option>
+            <option>Route 9</option>
+            <option>Route 9S</option>
+            <option>Route 10</option>
+            <option>Route 11</option>
+            <option>Route 13</option>
+            <option>Route 14</option>
+            <option>Route 15</option>
+            <option>Route 16</option>
+            <option>Route 17</option>
+            <option>Route 18</option>
+            <option>Route 19</option>
+            <option>Route 20</option>
+            <option>Route 22</option>
+            <option>Route 24</option>
+            <option>Route 31</option>
+            <option>Route 32</option>
+            <option>Route 40</option>
+            <option>Route 41</option>
+            <option>Route 42</option>
+            <option>Route 43</option>
+            <option>Route 44</option>
+            <option>Route 52</option>
+            <option>Route 53</option>
+            <option>Route 54</option>
+            <option>Route 55</option>
+            <option>Route 56</option>
+            <option>Route 57/57A</option>
+            <option>Route 62</option>
+            <option>Route 65</option>
+            <option>Route 70</option>
+            <option>Route 71</option>
+            <option>Route 72</option>
+            <option>Route 73</option>
+            <option>Route 74</option>
+            <option>Route 76</option>
+            <option>Route 77</option>
+            <option>Route 80</option>
+            <option>Route 80A</option>
+            <option>Route 80B</option>
+            <option>Route 81</option>
+            <option>Route 82</option>
+            <option>Route 83</option>
+            <option>Route 84</option>
+            <option>Route 84A</option>
+            <option>Route 85 & 85A</option>
+            <option>Route 88</option>
+            <option>Route 88A</option>
+            <option>Route 89</option>
+            <option>Route 90</option>
+            <option>Route 91</option>
+            <option>Route 92</option>
+            <option>Route 93</option>
+            <option>Route 94</option>
+            <option>Route 96</option>
+            <option>Route 97</option>
+            <option>Route 98</option>
+            <option>Route 98A</option>
+            <option>Route 101</option>
+            <option>Route 102</option>
+            <option>Route 103</option>
+            <option>Route W1</option>
+            <option>Route W2</option>
+            <option>Route 234</option>
+            <option>Route 235</option>
+            <option>Route 401</option>
+            <option>Route 402</option>
+            <option>Route 403</option>
+            <option>Route 411</option>
+            <option>Route 412</option>
+            <option>Route 413</option>
+            <option>Route 414</option>
+            <option>Route 415</option>
+            <option>Route 432</option>
+            <option>Route 433/434</option>
+            <option>Route 503</option>
+            <option>Route 501/504</option>
+          </select>
+        </td>
+        <td>
+          <select id="subscribe" name="subscribe" class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>...</option>
+          </select>
+        </td>
+        <td>
+          <select id="subscribe" name="subscribe" class="form-control">
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+            <option>20</option>
+            <option>21</option>
+            <option>22</option>
+            <option>23</option>
+          </select>
+        </td>
+        <td>
+          <select id="subscribe" name="subscribe" class="form-control">
+            <option>00</option>
+            <option>15</option>
+            <option>30</option>
+            <option>45</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Watched Route 2</td>
+        <td>
+          <select id="route" name="route" class="form-control">
+            <option>Route A</option>
+            <option>Route C</option>
+            <option>Route E</option>
+            <option>Route 1 and 1L</option>
+            <option>Route 2 and 2L</option>
+            <option>Route 3</option>
+            <option>Route 4</option>
+            <option>Route 5</option>
+            <option>Route 6</option>
+            <option>Route 7</option>
+            <option>Route 8</option>
+            <option>Route 9</option>
+            <option>Route 9S</option>
+            <option>Route 10</option>
+            <option>Route 11</option>
+            <option>Route 13</option>
+            <option>Route 14</option>
+            <option>Route 15</option>
+            <option>Route 16</option>
+            <option>Route 17</option>
+            <option>Route 18</option>
+            <option>Route 19</option>
+            <option>Route 20</option>
+            <option>Route 22</option>
+            <option>Route 24</option>
+            <option>Route 31</option>
+            <option>Route 32</option>
+            <option>Route 40</option>
+            <option>Route 41</option>
+            <option>Route 42</option>
+            <option>Route 43</option>
+            <option>Route 44</option>
+            <option>Route 52</option>
+            <option>Route 53</option>
+            <option>Route 54</option>
+            <option>Route 55</option>
+            <option>Route 56</option>
+            <option>Route 57/57A</option>
+            <option>Route 62</option>
+            <option>Route 65</option>
+            <option>Route 70</option>
+            <option>Route 71</option>
+            <option>Route 72</option>
+            <option>Route 73</option>
+            <option>Route 74</option>
+            <option>Route 76</option>
+            <option>Route 77</option>
+            <option>Route 80</option>
+            <option>Route 80A</option>
+            <option>Route 80B</option>
+            <option>Route 81</option>
+            <option>Route 82</option>
+            <option>Route 83</option>
+            <option>Route 84</option>
+            <option>Route 84A</option>
+            <option>Route 85 & 85A</option>
+            <option>Route 88</option>
+            <option>Route 88A</option>
+            <option>Route 89</option>
+            <option>Route 90</option>
+            <option>Route 91</option>
+            <option>Route 92</option>
+            <option>Route 93</option>
+            <option>Route 94</option>
+            <option>Route 96</option>
+            <option>Route 97</option>
+            <option>Route 98</option>
+            <option>Route 98A</option>
+            <option>Route 101</option>
+            <option>Route 102</option>
+            <option>Route 103</option>
+            <option>Route W1</option>
+            <option>Route W2</option>
+            <option>Route 234</option>
+            <option>Route 235</option>
+            <option>Route 401</option>
+            <option>Route 402</option>
+            <option>Route 403</option>
+            <option>Route 411</option>
+            <option>Route 412</option>
+            <option>Route 413</option>
+            <option>Route 414</option>
+            <option>Route 415</option>
+            <option>Route 432</option>
+            <option>Route 433/434</option>
+            <option>Route 503</option>
+            <option>Route 501/504</option>
+          </select>
+        </td>
+        <td>
+          <select id="subscribe" name="subscribe" class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>...</option>
+          </select>
+        </td>
+        <td>
+          <select id="subscribe" name="subscribe" class="form-control">
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+            <option>20</option>
+            <option>21</option>
+            <option>22</option>
+            <option>23</option>
+          </select>
+        </td>
+        <td>
+          <select id="subscribe" name="subscribe" class="form-control">
+            <option>00</option>
+            <option>15</option>
+            <option>30</option>
+            <option>45</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Watched Route 3</td>
+        <td>
+          <select id="route" name="route" class="form-control">
+            <option>Route A</option>
+            <option>Route C</option>
+            <option>Route E</option>
+            <option>Route 1 and 1L</option>
+            <option>Route 2 and 2L</option>
+            <option>Route 3</option>
+            <option>Route 4</option>
+            <option>Route 5</option>
+            <option>Route 6</option>
+            <option>Route 7</option>
+            <option>Route 8</option>
+            <option>Route 9</option>
+            <option>Route 9S</option>
+            <option>Route 10</option>
+            <option>Route 11</option>
+            <option>Route 13</option>
+            <option>Route 14</option>
+            <option>Route 15</option>
+            <option>Route 16</option>
+            <option>Route 17</option>
+            <option>Route 18</option>
+            <option>Route 19</option>
+            <option>Route 20</option>
+            <option>Route 22</option>
+            <option>Route 24</option>
+            <option>Route 31</option>
+            <option>Route 32</option>
+            <option>Route 40</option>
+            <option>Route 41</option>
+            <option>Route 42</option>
+            <option>Route 43</option>
+            <option>Route 44</option>
+            <option>Route 52</option>
+            <option>Route 53</option>
+            <option>Route 54</option>
+            <option>Route 55</option>
+            <option>Route 56</option>
+            <option>Route 57/57A</option>
+            <option>Route 62</option>
+            <option>Route 65</option>
+            <option>Route 70</option>
+            <option>Route 71</option>
+            <option>Route 72</option>
+            <option>Route 73</option>
+            <option>Route 74</option>
+            <option>Route 76</option>
+            <option>Route 77</option>
+            <option>Route 80</option>
+            <option>Route 80A</option>
+            <option>Route 80B</option>
+            <option>Route 81</option>
+            <option>Route 82</option>
+            <option>Route 83</option>
+            <option>Route 84</option>
+            <option>Route 84A</option>
+            <option>Route 85 & 85A</option>
+            <option>Route 88</option>
+            <option>Route 88A</option>
+            <option>Route 89</option>
+            <option>Route 90</option>
+            <option>Route 91</option>
+            <option>Route 92</option>
+            <option>Route 93</option>
+            <option>Route 94</option>
+            <option>Route 96</option>
+            <option>Route 97</option>
+            <option>Route 98</option>
+            <option>Route 98A</option>
+            <option>Route 101</option>
+            <option>Route 102</option>
+            <option>Route 103</option>
+            <option>Route W1</option>
+            <option>Route W2</option>
+            <option>Route 234</option>
+            <option>Route 235</option>
+            <option>Route 401</option>
+            <option>Route 402</option>
+            <option>Route 403</option>
+            <option>Route 411</option>
+            <option>Route 412</option>
+            <option>Route 413</option>
+            <option>Route 414</option>
+            <option>Route 415</option>
+            <option>Route 432</option>
+            <option>Route 433/434</option>
+            <option>Route 503</option>
+            <option>Route 501/504</option>
+          </select>
+        </td>
+        <td>
+          <select id="subscribe" name="subscribe" class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>...</option>
+          </select>
+        </td>
+        <td>
+          <select id="subscribe" name="subscribe" class="form-control">
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+            <option>20</option>
+            <option>21</option>
+            <option>22</option>
+            <option>23</option>
+          </select>
+        </td>
+        <td>
+          <select id="subscribe" name="subscribe" class="form-control">
+            <option>00</option>
+            <option>15</option>
+            <option>30</option>
+            <option>45</option>
+          </select>
+        </td>
+      </tr>
+
+
+
+    </table>
+  </div>
+
+</div>
+
+
+
+<div class="footer">
+  <a href="https://github.com/RobNamahoe/NotifyHawaii"><i class="fa fa-github-square fa-3x"></i></a>
+  <a href="mailto:rnamahoe@hawaii.edu"><i class="fa fa-envelope-o fa-3x"></i></a>
+  <a href="https://www.facebook.com/"><i class="fa fa-facebook fa-3x"></i></a>
+  <a href="https://twitter.com/"><i class="fa fa-twitter-square fa-3x"></i></a>
+</div>
+
+<!-- Load Bootstrap JavaScript components -->
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 body {
-  padding-top: 0.5em;  /* Move body of page below navbar. */
+  padding-top: 4em;  /* Move body of page below navbar. */
   padding-bottom: 70px;
 }
 
@@ -84,3 +84,15 @@ body {
   font-weight: 700;
 }
 
+.dropdown-menu {
+  width: 100%;
+}
+
+.btn{
+  width: 100%;
+}
+
+.leftaligned-image {
+  text-align: left;
+  margin: 10px 10px 10px 10px;
+}
