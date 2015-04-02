@@ -1,0 +1,90 @@
+body {
+  padding-top: 4em;  /* Move body of page below navbar. */
+  padding-bottom: 70px;
+}
+
+.navbar-brand {
+  padding-top: 0.5em;
+}
+
+.navbar-inverse .navbar-brand {
+  color: white;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #E5EDDC;
+  padding: 1em;
+}
+
+.logo-right {
+  background-image: url('../images/logoright.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+}
+
+.logo-left {
+  background-image: url('../images/logoleft.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+}
+
+.block-text-left {
+  padding-top: 5em;
+  padding-right: 7em;
+  font-size: 36px;
+  color: black;
+  text-align: center;
+}
+
+
+.block-text-right {
+  padding-top: 5em;
+  padding-left: 7em;
+  font-size: 36px;
+  color: black;
+  text-align: center;
+}
+
+.colorblock-blue {
+  background-color: #557EAB;
+  height: 400px;
+}
+
+
+.footer {
+  background-color: black;
+  color: white;
+  height: 80px;
+  text-align: center;
+  padding: 1.5em;
+
+  position: fixed;
+  bottom:0px;
+  left:0px;
+  right:0px;
+  margin-bottom:0px;
+}
+
+.footer > a {
+  color: white;
+  padding-left: 2.5em;
+}
+
+.footer > h2 {
+  margin-top: 0;
+  padding-top: 1.5em;
+
+  font-size: 2.5em;
+  color: #666;
+  font-weight: 700;
+}
+
+.leftaligned-image {
+  text-align: left;
+  margin: 10px 10px 10px 10px;
+}

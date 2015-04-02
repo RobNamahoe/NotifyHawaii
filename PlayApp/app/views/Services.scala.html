@@ -1,0 +1,79 @@
+@(message: String)
+
+@Main("Services") {
+  <div class="container">
+      <h2>Select a Service</h2>
+
+      <div class="row">
+          <div class="col-xs-6 col-md-3">
+              <div class="thumbnail">
+                  <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/61881_158916797452882_4555795_n.jpg?oh=a8ca7927a637801430e024cffec2939d&oe=55BAB749&__gda__=1438383194_2ccf6d0742b1766c4451fcbaebc8660e">
+                  <div class="caption">
+                      <h3>News</h3>
+                      <p>
+                        <ul>
+                            <li>Honolulu Star Advertiser</li>
+                            <li>Civil Beat</li>
+                            <li>Maui News</li>
+                         </ul>
+                      </p>
+                      <p><a href="@routes.Application.news()" class="btn btn-primary" role="button">View Services</a></p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+              <div class="thumbnail">
+                  <img src="https://lh4.ggpht.com/99bsLKJEN2B6T-WI63UYU7FG8mEXOGxbif6Lsgfzs_pIDs_2RxJSiOVaMhMhRmciizk=w300">
+                  <div class="caption">
+                      <h3>Commute</h3>
+                      <p>
+                        <ul>
+                            <li>Google Maps</li>
+                            <li>TheBus</li>
+                        </ul>
+                      </p>
+                      <p><a href="@routes.Application.commute()" class="btn btn-primary" role="button">View Services</a></p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+              <div class="thumbnail">
+                  <img src="http://www.infyways.com/wp-content/uploads/2013/02/Get-Current-Page-Name-in-WordPress.png">
+                  <div class="caption">
+                      <h3>Blogs & Posts</h3>
+                      <p>
+                  <ul>
+                      <li>Wordpress</li>
+                      <li>Craigslist</li>
+                  </ul>
+                      </p>
+                      <p><a href="@routes.Application.blogs()" class="btn btn-primary" role="button">View Services</a>
+                  </div>
+              </div>
+          </div>
+
+
+          <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+
+          <div class="col-xs-6 col-md-3">
+              <div class="thumbnail">
+                  <img src="@routes.Assets.at("images/origami.jpg")">
+                  <div class="caption">
+                      <h3>Create Your Own</h3>
+                      <p>
+                  <ul>
+                      <li>Enter your own site to watch.</li>
+                  </ul>
+                      </p>
+                      <p><a href="#" class="btn btn-primary" role="button">View Services</a>
+                  </div>
+              </div>
+          </div>
+
+
+      </div>
+
+  </div>
+}
