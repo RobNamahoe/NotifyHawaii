@@ -1,7 +1,11 @@
 package controllers;
 
+import models.UserDB;
+import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.formdata.ServiceProviders;
+import views.formdata.UserFormData;
 import views.html.Blogs;
 import views.html.Commute;
 import views.html.Index;
@@ -13,6 +17,8 @@ import views.html.Services;
  * Provides controllers for this application.
  */
 public class Application extends Controller {
+
+  private static long currentUserId = 1;
 
   /**
    * Returns the home page.
@@ -27,7 +33,9 @@ public class Application extends Controller {
    * @return The Account page.
    */
   public static Result account() {
-    return ok(Account.render("Welcome to Your Account Page."));
+    UserFormData data = new UserFormData(UserDB.getUser(currentUserId));
+    Form<UserFormData> formData = Form.form(UserFormData.class).fill(data);
+    return ok(Account.render("Welcome to Your Account Page.", formData, ServiceProviders.getCarriers(data.carrier)));
   }
 
   /**
@@ -60,6 +68,25 @@ public class Application extends Controller {
    */
   public static Result news() {
     return ok(News.render("News Services"));
+  }
+
+  /**
+   * Updates the current users contact information.
+   * @return The Account page with updated information.
+   */
+  public static Result updateUserInfo() {
+
+    Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
+
+    if (userForm.hasErrors()) {
+      return badRequest(Account.render("Account", userForm, ServiceProviders.getCarriers()));
+    }
+    else {
+      UserFormData formData = userForm.get();
+      UserDB.updateUser(formData);
+      return ok(Account.render("Account", userForm, ServiceProviders.getCarriers(formData.carrier)));
+    }
+
   }
 
 }

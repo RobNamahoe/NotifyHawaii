@@ -2,6 +2,7 @@
   <library name="SBT: cglib:cglib-nodep:2.1_3:jar">
     <CLASSES>
       <root url="jar://$USER_HOME$/.ivy2/cache/cglib/cglib-nodep/jars/cglib-nodep-2.1_3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jaunt0.9.9.8.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
