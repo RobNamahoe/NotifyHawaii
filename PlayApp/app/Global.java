@@ -1,4 +1,3 @@
-import controllers.NewsServices;
 import models.NewsArticle;
 import models.User;
 import models.UserDB;
@@ -18,9 +17,21 @@ public class Global extends GlobalSettings {
 
     ArrayList<NewsArticle> list;
 
-    //list = NewsServices.getStarAdvertiserBreakingNewsArticles();
-    //list = NewsServices.getStartAdvertiserPopularNewsArticles();
-    //list = NewsServices.getStarAdvertiserBreakingNewsSportsArticles();
+    //HonoluluStarAdvertiser.getBreakingArticles();
+    //HonoluluStarAdvertiser.getPopularArticles();
+    //HonoluluStarAdvertiser.getSportsArticles();
+
+    //list = MauiNews.getLocalNewsArticles();
+    //list = MauiNews.getBreakingNewsArticles();
+    //list = MauiNews.getBusinessNewsArticles();
+
+    //list = CivilBeat.getDevelopmentArticles();
+    //list = CivilBeat.getEducationArticles();
+    //list = CivilBeat.getEnergyAndEnvironmentArticles();
+    //list = CivilBeat.getHawaiiArticles();
+    //list = CivilBeat.getHonoluluArticles();
+    //list = CivilBeat.getPoliticsArticles();
+    //list = CivilBeat.getPopularArticles();
 
     //printList(list);
 
@@ -40,4 +51,5 @@ public class Global extends GlobalSettings {
       System.out.println("------------------");
     }
   }
+
 }

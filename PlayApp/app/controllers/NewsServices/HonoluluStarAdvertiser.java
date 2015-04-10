@@ -1,4 +1,4 @@
-package controllers;
+package controllers.NewsServices;
 
 import com.jaunt.Element;
 import com.jaunt.Elements;
@@ -10,15 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implements the News Services services.
+ * Implements the Honolulu Star Advertiser News Services functions.
  */
-public class NewsServices {
+public class HonoluluStarAdvertiser {
+
 
   /**
    * Gets a list of Honolulu Star Advertiser Breaking SPORTS News Articles.
    * @return articles A list of the breaking SPORTS news articles.
    */
-  public static ArrayList<NewsArticle> getStarAdvertiserBreakingNewsSportsArticles() {
+  public static ArrayList<NewsArticle> getSportsArticles() {
 
     String url = "http://www.staradvertiser.com/sports/breaking/";
     ArrayList<NewsArticle> articles = new ArrayList<>();
@@ -28,7 +29,7 @@ public class NewsServices {
       userAgent.visit(url);
     }
     catch (JauntException e) {
-      System.err.println("Error in NewsServices.java visiting breaking Sports HSA articles");
+      System.err.println("Error in HonoluluStarAdvertiser.java visiting breaking Sports HSA articles");
     }
 
     Elements stories = userAgent.doc.findEach("<div id=\"redesign-digest-container\">").findEvery("<a>");
@@ -45,7 +46,7 @@ public class NewsServices {
    * Gets a list of the Honolulu Star Advertiser Most Popular stories.
    * @return A list of the most popular stories.
    */
-  public static ArrayList<NewsArticle> getStartAdvertiserPopularNewsArticles() {
+  public static ArrayList<NewsArticle> getPopularArticles() {
 
     String url = "http://www.staradvertiser.com/mostpopular/";
     ArrayList<NewsArticle> articles = new ArrayList<>();
@@ -55,7 +56,7 @@ public class NewsServices {
       userAgent.visit(url);
     }
     catch (JauntException e) {
-      System.err.println("Error in NewsServices.java visiting most popular HSA articles");
+      System.err.println("Error in HonoluluStarAdvertiser.java visiting most popular HSA articles");
     }
 
     Elements div = userAgent.doc.findEvery("<div id=weird_news>");
@@ -96,7 +97,7 @@ public class NewsServices {
    * Gets a list of Honolulu Star Advertiser Breaking News Articles.
    * @return A list of the breaking news articles.
    */
-  public static ArrayList<NewsArticle> getStarAdvertiserBreakingNewsArticles() {
+  public static ArrayList<NewsArticle> getBreakingArticles() {
 
     String url = "http://www.staradvertiser.com/news/breaking/";
     ArrayList<NewsArticle> articles = new ArrayList<>();
@@ -106,7 +107,7 @@ public class NewsServices {
       userAgent.visit(url);
     }
     catch (JauntException e) {
-      System.err.println("Error in NewsServices.java visiting breaking HSA articles");
+      System.err.println("Error in HonoluluStarAdvertiser.java visiting breaking HSA articles");
     }
 
     Elements stories = userAgent.doc.findEach("<div id=\"redesign-digest-container\">").findEvery("<a>");
@@ -118,7 +119,6 @@ public class NewsServices {
     return articles;
 
   }
-
 
   /**
    * Extracts the details of the news story and returns a NewsArticle object.
