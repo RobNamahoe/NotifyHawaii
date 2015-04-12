@@ -6,7 +6,7 @@ import models.User;
 import play.data.validation.ValidationError;
 
 /**
- * A class that stores data for the notification preferences form.
+ * A class that stores data for the users account page/form.
  * @author Rob Namahoe
  */
 public class UserFormData {

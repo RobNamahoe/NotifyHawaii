@@ -67,7 +67,7 @@ public class CivilBeat {
   }
 
   /**
-   * Gets the Maui News articles of the specified ArticleType.
+   * Gets the Civil Beat News articles of the specified ArticleType.
    * @param type The article type.
    * @return A list of News Articles for the specified type.
    */

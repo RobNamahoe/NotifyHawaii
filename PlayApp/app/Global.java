@@ -1,3 +1,4 @@
+import controllers.Communication.SendEmail;
 import models.NewsArticle;
 import models.User;
 import models.UserDB;
@@ -16,6 +17,8 @@ public class Global extends GlobalSettings {
     super.onStart(application);
 
     ArrayList<NewsArticle> list;
+
+    SendEmail.testmail("", "", "");
 
     //HonoluluStarAdvertiser.getBreakingArticles();
     //HonoluluStarAdvertiser.getPopularArticles();
