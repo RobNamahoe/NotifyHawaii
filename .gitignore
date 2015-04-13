@@ -7,7 +7,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 
@@ -19,7 +18,7 @@ hs_err_pid*
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
 ## Directory-based project format:
-#.idea/
+.idea/
 # if you remove the above rule, at least ignore the following:
 
 # User-specific stuff:
