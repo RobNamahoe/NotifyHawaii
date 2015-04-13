@@ -7,83 +7,143 @@ import models.NewsServicesSubscription;
  */
 public class NewsServicesFormData {
 
-  // Honolulu Star Advertiser
+  /** Honolulu Star Advertiser Breaking News subscription. */
   public String hsaBreakingSubscribe = "No";
+  /** Honolulu Star Advertiser Breaking News notification method. */
   public String hsaBreakingNotifyBy = "Email";
+  /** Honolulu Star Advertiser Breaking News notification hour. */
   public String hsaBreakingNotifyAtHour = "0";
+  /** Honolulu Star Advertiser Breaking News notification minute. */
   public String hsaBreakingNotifyAtMinute = "0";
 
+  /** Honolulu Star Advertiser Popular News subscription. */
   public String hsaPopularSubscribe = "No";
+  /** Honolulu Star Advertiser Popular News notification method. */
   public String hsaPopularNotifyBy = "Email";
+  /** Honolulu Star Advertiser Popular News notification hour. */
   public String hsaPopularNotifyAtHour = "0";
+  /** Honolulu Star Advertiser Popular News notification minute. */
   public String hsaPopularNotifyAtMinute = "0";
 
+  /** Honolulu Star Advertiser Sports News subscription. */
   public String hsaSportsSubscribe = "No";
+  /** Honolulu Star Advertiser Sports News notification method. */
   public String hsaSportsNotifyBy = "Email";
+  /** Honolulu Star Advertiser Sports News notification hour. */
   public String hsaSportsNotifyAtHour = "0";
+  /** Honolulu Star Advertiser Sports News notification minute. */
   public String hsaSportsNotifyAtMinute = "0";
 
   // Maui News
+  /** Maui News Breaking News subscription. */
   public String mnBreakingSubscribe = "No";
+  /** Maui News Breaking News notification method. */
   public String mnBreakingNotifyBy = "Email";
+  /** Maui News Breaking News notification hour. */
   public String mnBreakingNotifyAtHour = "0";
+  /** Maui News Breaking News notification minute. */
   public String mnBreakingNotifyAtMinute = "0";
 
-
+  /** Maui News Sports Business subscription. */
   public String mnBusinessSubscribe = "No";
+  /** Maui News Sports Business notification method. */
   public String mnBusinessNotifyBy = "Email";
+  /** Maui News Sports Business notification hour. */
   public String mnBusinessNotifyAtHour = "0";
+  /** Maui News Sports Business notification minute. */
   public String mnBusinessNotifyAtMinute = "0";
 
+
+  /** Maui News Hawaii News subscription. */
   public String mnHawaiiSubscribe = "No";
+  /** Maui News Hawaii News notification method. */
   public String mnHawaiiNotifyBy = "Email";
+  /** Maui News Hawaii News notification hour. */
   public String mnHawaiiNotifyAtHour = "0";
+  /** Maui News Hawaii News notification minute. */
   public String mnHawaiiNotifyAtMinute = "0";
 
+  /** Maui News Local News subscription. */
   public String mnLocalSubscribe = "No";
+  /** Maui News Local News notification method. */
   public String mnLocalNotifyBy = "Email";
+  /** Maui News Local News notification hour. */
   public String mnLocalNotifyAtHour = "0";
+  /** Maui News Local News notification minute. */
   public String mnLocalNotifyAtMinute = "0";
 
   // Civil Beat
+  /** Civil Beat Popular News subscription. */
   public String cbPopularSubscribe = "No";
+  /** Civil Beat Popular News notification method. */
   public String cbPopularNotifyBy = "Email";
+  /** Civil Beat Popular News notification hour. */
   public String cbPopularNotifyAtHour = "0";
+  /** Civil Beat Popular News notification minute. */
   public String cbPopularNotifyAtMinute = "0";
 
+  /** Civil Beat Honolulu News subscription. */
   public String cbHonoluluSubscribe = "No";
+  /** Civil Beat Honolulu News notification method. */
   public String cbHonoluluNotifyBy = "Email";
+  /** Civil Beat Honolulu News notification hour. */
   public String cbHonoluluNotifyAtHour = "0";
+  /** Civil Beat Honolulu News notification minute. */
   public String cbHonoluluNotifyAtMinute = "0";
 
+  /** Civil Beat Hawaii News subscription. */
   public String cbHawaiiSubscribe = "No";
+  /** Civil Beat Hawaii News notification method. */
   public String cbHawaiiNotifyBy = "Email";
+  /** Civil Beat Hawaii News notification hour. */
   public String cbHawaiiNotifyAtHour = "0";
+  /** Civil Beat Hawaii News notification minute. */
   public String cbHawaiiNotifyAtMinute = "0";
 
+  /** Civil Beat Education News subscription. */
   public String cbEducationSubscribe = "No";
+  /** Civil Beat Education News notification method. */
   public String cbEducationNotifyBy = "Email";
+  /** Civil Beat Education News notification hour. */
   public String cbEducationNotifyAtHour = "0";
+  /** Civil Beat Education News notification minute. */
   public String cbEducationNotifyAtMinute = "0";
 
+  /** Civil Beat Politics News subscription. */
   public String cbPoliticsSubscribe = "No";
+  /** Civil Beat Politics News notification method. */
   public String cbPoliticsNotifyBy = "Email";
+  /** Civil Beat Politics News notification hour. */
   public String cbPoliticsNotifyAtHour = "0";
+  /** Civil Beat Politics News notification minute. */
   public String cbPoliticsNotifyAtMinute = "0";
 
+  /** Civil Beat Energy and Environment News subscription. */
   public String cbEnergyAndEnvironmentSubscribe = "No";
+  /** Civil Beat Energy and Environment News notification method. */
   public String cbEnergyAndEnvironmentNotifyBy = "Email";
+  /** Civil Beat Energy and Environment News notification hour. */
   public String cbEnergyAndEnvironmentNotifyAtHour = "0";
+  /** Civil Beat Energy and Environment News notification minute. */
   public String cbEnergyAndEnvironmentNotifyAtMinute = "0";
+
+  /** Civil Beat Development News subscription. */
   public String cbDevelopmentSubscribe = "No";
+  /** Civil Beat Development News notification method. */
   public String cbDevelopmentNotifyBy = "Email";
+  /** Civil Beat Development News notification hour. */
   public String cbDevelopmentNotifyAtHour = "0";
+  /** Civil Beat Development News notification minute. */
   public String cbDevelopmentNotifyAtMinute = "0";
 
   /** Required for form instantiation. */
   public NewsServicesFormData() {
   }
 
+  /**
+   * Constructs a new NewsServicesFormData instance from the given NewsServicesSubscription object.
+   * @param subscription The NewsServicesSubscription object.
+   */
   public NewsServicesFormData(NewsServicesSubscription subscription) {
 
     // Honolulu Star Advertiser
