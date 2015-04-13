@@ -2,7 +2,12 @@
 
 Overview
 --------
-The goal of this application is to keep the user informed of specific events so that he can make better, more efficient use of his time.
+The goal of this application is to keep the user informed of specific events so that he can make better, more efficient use of his or her time.
+
+Documentation
+-------------
+View the [User Guide](https://github.com/RobNamahoe/NotifyHawaii/wiki/User-Guide).<br>
+View the [Developers Guide](https://github.com/RobNamahoe/NotifyHawaii/wiki/Developer-Guide).
 
 Approach
 --------
