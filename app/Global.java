@@ -40,7 +40,7 @@ public class Global extends GlobalSettings {
 
     //printList(list);
 
-    User user = new User(1, "Rob", "Namahoe", "8083432159", "rnamahoe@hawaii.edu", "AT&T Wireless");
+    User user = new User(1, "Rob", "Namahoe", "8085551234", "rnamahoe@somewhere.com", "AT&T Wireless");
     UserDB.addUser(user);
 
     NewsServicesFormData formData = new NewsServicesFormData();
