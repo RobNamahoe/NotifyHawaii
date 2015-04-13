@@ -1,9 +1,12 @@
 import controllers.Communication.SendEmail;
 import models.NewsArticle;
+import models.NewsServiceSubscriptionDB;
+import models.NewsServicesSubscription;
 import models.User;
 import models.UserDB;
 import play.Application;
 import play.GlobalSettings;
+import views.formdata.NewsServicesFormData;
 
 import java.util.ArrayList;
 
@@ -18,7 +21,7 @@ public class Global extends GlobalSettings {
 
     ArrayList<NewsArticle> list;
 
-    SendEmail.testmail("", "", "");
+    //SendEmail.testmail("", "", "");
 
     //HonoluluStarAdvertiser.getBreakingArticles();
     //HonoluluStarAdvertiser.getPopularArticles();
@@ -40,6 +43,11 @@ public class Global extends GlobalSettings {
 
     User user = new User(1, "Rob", "Namahoe", "808-343-2159", "rnamahoe@hawaii.edu", "Verizon");
     UserDB.addUser(user);
+
+    NewsServicesFormData formData = new NewsServicesFormData();
+    NewsServicesSubscription data = new NewsServicesSubscription(formData);
+    NewsServiceSubscriptionDB.addSubscription(1, data);
+
   }
 
   /**

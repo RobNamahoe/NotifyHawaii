@@ -1,9 +1,11 @@
 package controllers;
 
+import models.NewsServiceSubscriptionDB;
 import models.UserDB;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.formdata.NewsServicesFormData;
 import views.formdata.ServiceProviders;
 import views.formdata.UserFormData;
 import views.html.Blogs;
@@ -67,7 +69,12 @@ public class Application extends Controller {
    * @return The News services page.
    */
   public static Result news() {
-    return ok(News.render("News Services"));
+    NewsServicesFormData data = (currentUserId == 0) ? new NewsServicesFormData() :
+        new NewsServicesFormData(NewsServiceSubscriptionDB.getSubscription(currentUserId));
+
+    Form<NewsServicesFormData> formData = Form.form(NewsServicesFormData.class).fill(data);
+
+    return ok(News.render("News Services", formData, NewsServiceSubscriptionDB.getSubscription(currentUserId)));
   }
 
   /**

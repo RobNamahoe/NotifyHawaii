@@ -1,4 +1,7 @@
-@(message: String)
+@(message: String, newsServicesForm: Form[views.formdata.NewsServicesFormData], data: NewsServicesSubscription)
+
+@import helper._
+@import views.html.bootstrap3._
 
 @Main("News Services") {
     <div class="container">
@@ -27,154 +30,70 @@
                 <tr>
                     <td>Breaking News</td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
+                        @selectYesNo(newsServicesForm("hsaBreakingSubscribe"),
+                            isMultiple = false,
+                            currentValue = data.getHsaBreakingSubscribe())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Email</option>
-                            <option>Text</option>
-                        </select>
+                        @selectNotifyBy(newsServicesForm("hsaBreakingNotifyBy"),
+                            isMultiple = false,
+                            currentValue = data.getHsaBreakingNotifyBy())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
-                            <option>13</option>
-                            <option>14</option>
-                            <option>15</option>
-                            <option>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                        </select>
+                        @selectNotifyAtHour(newsServicesForm("hsaBreakingNotifyAtHour"),
+                            isMultiple = false,
+                            currentValue = data.getHsaBreakingNotifyAtHour())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>00</option>
-                            <option>15</option>
-                            <option>30</option>
-                            <option>45</option>
-                        </select>
+                        @selectNotifyAtMinute(newsServicesForm("hsaBreakingNotifyAtMinute"),
+                            isMultiple = false,
+                            currentValue = data.getHsaBreakingNotifyAtMinute())
                     </td>
                 </tr>
                 <tr>
                     <td>Popular News</td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
+                    @selectYesNo(newsServicesForm("hsaPopularSubscribe"),
+                        isMultiple = false,
+                        currentValue = data.getHsaPopularSubscribe())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Email</option>
-                            <option>Text</option>
-                        </select>
+                    @selectNotifyBy(newsServicesForm("hsaPopularNotifyBy"),
+                        isMultiple = false,
+                        currentValue = data.getHsaPopularNotifyBy())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
-                            <option>13</option>
-                            <option>14</option>
-                            <option>15</option>
-                            <option>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                        </select>
+                    @selectNotifyAtHour(newsServicesForm("hsaPopularNotifyAtHour"),
+                        isMultiple = false,
+                        currentValue = data.getHsaPopularNotifyAtHour())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>00</option>
-                            <option>15</option>
-                            <option>30</option>
-                            <option>45</option>
-                        </select>
+                    @selectNotifyAtMinute(newsServicesForm("hsaPopularNotifyAtMinute"),
+                        isMultiple = false,
+                        currentValue = data.getHsaPopularNotifyAtMinute())
                     </td>
                 </tr>
                 <tr>
                     <td>Sports</td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
+                    @selectYesNo(newsServicesForm("hsaSportsSubscribe"),
+                        isMultiple = false,
+                        currentValue = data.getHsaSportsSubscribe())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Email</option>
-                            <option>Text</option>
-                        </select>
+                    @selectNotifyBy(newsServicesForm("hsaSportsNotifyBy"),
+                        isMultiple = false,
+                        currentValue = data.getHsaSportsNotifyBy())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
-                            <option>13</option>
-                            <option>14</option>
-                            <option>15</option>
-                            <option>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                        </select>
+                    @selectNotifyAtHour(newsServicesForm("hsaSportsNotifyAtHour"),
+                        isMultiple = false,
+                        currentValue = data.getHsaSportsNotifyAtHour())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>00</option>
-                            <option>15</option>
-                            <option>30</option>
-                            <option>45</option>
-                        </select>
+                    @selectNotifyAtMinute(newsServicesForm("hsaSportsNotifyAtMinute"),
+                        isMultiple = false,
+                        currentValue = data.getHsaSportsNotifyAtMinute())
                     </td>
                 </tr>
 
@@ -205,154 +124,93 @@
                 <tr>
                     <td>Breaking News</td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
+                    @selectYesNo(newsServicesForm("mnBreakingSubscribe"),
+                        isMultiple = false,
+                        currentValue = data.getMnBreakingSubscribe())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Email</option>
-                            <option>Text</option>
-                        </select>
+                    @selectNotifyBy(newsServicesForm("mnBreakingNotifyBy"),
+                        isMultiple = false,
+                        currentValue = data.getMnBreakingNotifyBy())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
-                            <option>13</option>
-                            <option>14</option>
-                            <option>15</option>
-                            <option>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                        </select>
+                    @selectNotifyAtHour(newsServicesForm("mnBreakingNotifyAtHour"),
+                        isMultiple = false,
+                        currentValue = data.getMnBreakingNotifyAtHour())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>00</option>
-                            <option>15</option>
-                            <option>30</option>
-                            <option>45</option>
-                        </select>
+                    @selectNotifyAtMinute(newsServicesForm("mnBreakingNotifyAtMinute"),
+                        isMultiple = false,
+                        currentValue = data.getMnBreakingNotifyAtMinute())
+                    </td>
+                </tr>
+                <tr>
+                    <td>Business News</td>
+                    <td>
+                    @selectYesNo(newsServicesForm("mnBusinessSubscribe"),
+                        isMultiple = false,
+                        currentValue = data.getMnBusinessSubscribe())
+                    </td>
+                    <td>
+                    @selectNotifyBy(newsServicesForm("mnBusinessNotifyBy"),
+                        isMultiple = false,
+                        currentValue = data.getMnBusinessNotifyBy())
+                    </td>
+                    <td>
+                    @selectNotifyAtHour(newsServicesForm("mnBusinessNotifyAtHour"),
+                        isMultiple = false,
+                        currentValue = data.getMnBusinessNotifyAtHour())
+                    </td>
+                    <td>
+                    @selectNotifyAtMinute(newsServicesForm("mnBusinessNotifyAtMinute"),
+                        isMultiple = false,
+                        currentValue = data.getMnBusinessNotifyAtMinute())
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hawaii News</td>
+                    <td>
+                    @selectYesNo(newsServicesForm("mnHawaiiSubscribe"),
+                        isMultiple = false,
+                        currentValue = data.getMnHawaiiSubscribe())
+                    </td>
+                    <td>
+                    @selectNotifyBy(newsServicesForm("mnHawaiiNotifyBy"),
+                        isMultiple = false,
+                        currentValue = data.getMnHawaiiNotifyBy())
+                    </td>
+                    <td>
+                    @selectNotifyAtHour(newsServicesForm("mnHawaiiNotifyAtHour"),
+                        isMultiple = false,
+                        currentValue = data.getMnHawaiiNotifyAtHour())
+                    </td>
+                    <td>
+                    @selectNotifyAtMinute(newsServicesForm("mnHawaiiNotifyAtMinute"),
+                        isMultiple = false,
+                        currentValue = data.getMnHawaiiNotifyAtMinute())
                     </td>
                 </tr>
                 <tr>
                     <td>Local News</td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
+                    @selectYesNo(newsServicesForm("mnLocalSubscribe"),
+                        isMultiple = false,
+                        currentValue = data.getMnLocalSubscribe())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Email</option>
-                            <option>Text</option>
-                        </select>
+                    @selectNotifyBy(newsServicesForm("mnLocalNotifyBy"),
+                        isMultiple = false,
+                        currentValue = data.getMnLocalNotifyBy())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
-                            <option>13</option>
-                            <option>14</option>
-                            <option>15</option>
-                            <option>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                        </select>
+                    @selectNotifyAtHour(newsServicesForm("mnLocalNotifyAtHour"),
+                        isMultiple = false,
+                        currentValue = data.getMnLocalNotifyAtHour())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>00</option>
-                            <option>15</option>
-                            <option>30</option>
-                            <option>45</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Local Sports</td>
-                    <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Email</option>
-                            <option>Text</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
-                            <option>13</option>
-                            <option>14</option>
-                            <option>15</option>
-                            <option>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>00</option>
-                            <option>15</option>
-                            <option>30</option>
-                            <option>45</option>
-                        </select>
+                    @selectNotifyAtMinute(newsServicesForm("mnLocalNotifyAtMinute"),
+                        isMultiple = false,
+                        currentValue = data.getMnLocalNotifyAtMinute())
                     </td>
                 </tr>
 
@@ -367,9 +225,6 @@
 
         <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <!--
-    <div class="panel-heading">Honolulu Star Advertiser</div>
-    -->
                 <!-- Table -->
             <table class="table">
                 <col width="55%">
@@ -384,112 +239,171 @@
                     <th>Notify At</th>
                     <th></th>
                 </tr>
-                <tr>
-                    <td>Front Page Stories</td>
-                    <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Email</option>
-                            <option>Text</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
-                            <option>13</option>
-                            <option>14</option>
-                            <option>15</option>
-                            <option>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>00</option>
-                            <option>15</option>
-                            <option>30</option>
-                            <option>45</option>
-                        </select>
-                    </td>
-                </tr>
+
                 <tr>
                     <td>Most Popular Stories</td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
+                    @selectYesNo(newsServicesForm("cbPopularSubscribe"),
+                        isMultiple = false,
+                        currentValue = data.getCbPopularSubscribe())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>Email</option>
-                            <option>Text</option>
-                        </select>
+                    @selectNotifyBy(newsServicesForm("cbPopularNotifyBy"),
+                        isMultiple = false,
+                        currentValue = data.getCbPopularNotifyBy())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
-                            <option>13</option>
-                            <option>14</option>
-                            <option>15</option>
-                            <option>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                        </select>
+                    @selectNotifyAtHour(newsServicesForm("cbPopularNotifyAtHour"),
+                        isMultiple = false,
+                        currentValue = data.getCbPopularNotifyAtHour())
                     </td>
                     <td>
-                        <select id="subscribe" name="subscribe" class="form-control">
-                            <option>00</option>
-                            <option>15</option>
-                            <option>30</option>
-                            <option>45</option>
-                        </select>
+                    @selectNotifyAtMinute(newsServicesForm("cbPopularNotifyAtMinute"),
+                        isMultiple = false,
+                        currentValue = data.getCbPopularNotifyAtMinute())
                     </td>
                 </tr>
+                <tr>
+                    <td>Honolulu News</td>
+                    <td>
+                    @selectYesNo(newsServicesForm("cbHonoluluSubscribe"),
+                        isMultiple = false,
+                        currentValue = data.getCbHonoluluSubscribe())
+                    </td>
+                    <td>
+                    @selectNotifyBy(newsServicesForm("cbHonoluluNotifyBy"),
+                        isMultiple = false,
+                        currentValue = data.getCbHonoluluNotifyBy())
+                    </td>
+                    <td>
+                    @selectNotifyAtHour(newsServicesForm("cbHonoluluNotifyAtHour"),
+                        isMultiple = false,
+                        currentValue = data.getCbHonoluluNotifyAtHour())
+                    </td>
+                    <td>
+                    @selectNotifyAtMinute(newsServicesForm("cbHonoluluNotifyAtMinute"),
+                        isMultiple = false,
+                        currentValue = data.getCbHonoluluNotifyAtMinute())
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hawai'i News</td>
+                    <td>
+                    @selectYesNo(newsServicesForm("cbHawaiiSubscribe"),
+                        isMultiple = false,
+                        currentValue = data.getCbHawaiiSubscribe())
+                    </td>
+                    <td>
+                    @selectNotifyBy(newsServicesForm("cbHawaiiNotifyBy"),
+                        isMultiple = false,
+                        currentValue = data.getCbHawaiiNotifyBy())
+                    </td>
+                    <td>
+                    @selectNotifyAtHour(newsServicesForm("cbHawaiiNotifyAtHour"),
+                        isMultiple = false,
+                        currentValue = data.getCbHawaiiNotifyAtHour())
+                    </td>
+                    <td>
+                    @selectNotifyAtMinute(newsServicesForm("cbHawaiiNotifyAtMinute"),
+                        isMultiple = false,
+                        currentValue = data.getCbHawaiiNotifyAtMinute())
+                    </td>
+                </tr>
+                <tr>
+                    <td>Education</td>
+                    <td>
+                    @selectYesNo(newsServicesForm("cbEducationSubscribe"),
+                        isMultiple = false,
+                        currentValue = data.getCbEducationSubscribe())
+                    </td>
+                    <td>
+                    @selectNotifyBy(newsServicesForm("cbEducationNotifyBy"),
+                        isMultiple = false,
+                        currentValue = data.getCbEducationNotifyBy())
+                    </td>
+                    <td>
+                    @selectNotifyAtHour(newsServicesForm("cbEducationNotifyAtHour"),
+                        isMultiple = false,
+                        currentValue = data.getCbEducationNotifyAtHour())
+                    </td>
+                    <td>
+                    @selectNotifyAtMinute(newsServicesForm("cbEducationNotifyAtMinute"),
+                        isMultiple = false,
+                        currentValue = data.getCbEducationNotifyAtMinute())
+                    </td>
+                </tr>
+                <tr>
+                    <td>Politics</td>
+                    <td>
+                    @selectYesNo(newsServicesForm("cbPoliticsSubscribe"),
+                        isMultiple = false,
+                        currentValue = data.getCbPoliticsSubscribe())
+                    </td>
+                    <td>
+                    @selectNotifyBy(newsServicesForm("cbPoliticsNotifyBy"),
+                        isMultiple = false,
+                        currentValue = data.getCbPoliticsNotifyBy())
+                    </td>
+                    <td>
+                    @selectNotifyAtHour(newsServicesForm("cbPoliticsNotifyAtHour"),
+                        isMultiple = false,
+                        currentValue = data.getCbPoliticsNotifyAtHour())
+                    </td>
+                    <td>
+                    @selectNotifyAtMinute(newsServicesForm("cbPoliticsNotifyAtMinute"),
+                        isMultiple = false,
+                        currentValue = data.getCbPoliticsNotifyAtMinute())
+                    </td>
+                </tr>
+                <tr>
+                    <td>Energy and Environment</td>
+                    <td>
+                    @selectYesNo(newsServicesForm("cbEnergyAndEnvironmentSubscribe"),
+                        isMultiple = false,
+                        currentValue = data.getCbEnergyAndEnvironmentSubscribe())
+                    </td>
+                    <td>
+                    @selectNotifyBy(newsServicesForm("cbEnergyAndEnvironmentNotifyBy"),
+                        isMultiple = false,
+                        currentValue = data.getCbEnergyAndEnvironmentNotifyBy())
+                    </td>
+                    <td>
+                    @selectNotifyAtHour(newsServicesForm("cbEnergyAndEnvironmentNotifyAtHour"),
+                        isMultiple = false,
+                        currentValue = data.getCbEnergyAndEnvironmentNotifyAtHour())
+                    </td>
+                    <td>
+                    @selectNotifyAtMinute(newsServicesForm("cbEnergyAndEnvironmentNotifyAtMinute"),
+                        isMultiple = false,
+                        currentValue = data.getCbEnergyAndEnvironmentNotifyAtMinute())
+                    </td>
+                </tr>
+                <tr>
+                    <td>Development</td>
+                    <td>
+                    @selectYesNo(newsServicesForm("cbDevelopmentSubscribe"),
+                        isMultiple = false,
+                        currentValue = data.getCbDevelopmentSubscribe())
+                    </td>
+                    <td>
+                    @selectNotifyBy(newsServicesForm("cbDevelopmentNotifyBy"),
+                        isMultiple = false,
+                        currentValue = data.getCbDevelopmentNotifyBy())
+                    </td>
+                    <td>
+                    @selectNotifyAtHour(newsServicesForm("cbDevelopmentNotifyAtHour"),
+                        isMultiple = false,
+                        currentValue = data.getCbDevelopmentNotifyAtHour())
+                    </td>
+                    <td>
+                    @selectNotifyAtMinute(newsServicesForm("cbDevelopmentNotifyAtMinute"),
+                        isMultiple = false,
+                        currentValue = data.getCbDevelopmentNotifyAtMinute())
+                    </td>
+                </tr>
+
             </table>
         </div>
-
-
 
     </div>
 }
