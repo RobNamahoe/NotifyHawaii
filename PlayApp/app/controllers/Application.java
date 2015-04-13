@@ -1,6 +1,8 @@
 package controllers;
 
+import controllers.NewsServices.NewsServices;
 import models.NewsServiceSubscriptionDB;
+import models.NewsServicesSubscription;
 import models.UserDB;
 import play.data.Form;
 import play.mvc.Controller;
@@ -71,10 +73,22 @@ public class Application extends Controller {
   public static Result news() {
     NewsServicesFormData data = (currentUserId == 0) ? new NewsServicesFormData() :
         new NewsServicesFormData(NewsServiceSubscriptionDB.getSubscription(currentUserId));
-
     Form<NewsServicesFormData> formData = Form.form(NewsServicesFormData.class).fill(data);
 
+    NewsServices.execute(UserDB.getUser(currentUserId), NewsServiceSubscriptionDB.getSubscription(currentUserId));
+
     return ok(News.render("News Services", formData, NewsServiceSubscriptionDB.getSubscription(currentUserId)));
+  }
+
+  /**
+   * Update the current users News subscriptions.
+   * @return Redirect to the news page.
+   */
+  public static Result updateNewsSubscriptions() {
+    Form<NewsServicesFormData> formData = Form.form(NewsServicesFormData.class).bindFromRequest();
+    NewsServicesFormData data = formData.get();
+    NewsServiceSubscriptionDB.addSubscription(currentUserId, new NewsServicesSubscription(data));
+    return redirect(routes.Application.news());
   }
 
   /**

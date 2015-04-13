@@ -16,9 +16,9 @@ public class NewsArticle {
    * @param summary The articles summary.
    */
   public NewsArticle(String url, String title, String summary) {
-    this.url = url;
-    this.title = title;
-    this.summary = summary;
+    this.url = url.trim();
+    this.title = title.trim();
+    this.summary = summary.trim();
   }
 
   /**
@@ -44,4 +44,17 @@ public class NewsArticle {
   public String getSummary() {
     return this.summary;
   }
+
+  /**
+   * Gets the HTML representation of the article.
+   * @return The HTML representation of the article.
+   */
+  public String getHtml() {
+    String content = "<a href=\"" + this.url + "\">" + this.title + "</a>"; //<br>" + this.summary;
+    content += (this.summary.length() > 0) ? "<br>" + this.summary : "";
+    return content;
+  }
+
+
+
 }

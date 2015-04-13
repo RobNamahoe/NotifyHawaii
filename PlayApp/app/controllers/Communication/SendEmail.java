@@ -8,7 +8,7 @@ import org.apache.commons.mail.HtmlEmail;
  */
 public class SendEmail {
 
-  public static void testmail(String sendTo, String subject, String content) {
+  public static void sendEmail(String sendTo, String subject, String content) {
 
     String emailAddress = "notifyhawaii@gmail.com";
     String password = "zes5utedraqabAx";

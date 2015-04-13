@@ -2,6 +2,8 @@ package models;
 
 import views.formdata.NewsServicesFormData;
 
+import java.util.ArrayList;
+
 /**
  * A class that represents news services subscriptions held by the user.
  */
@@ -384,4 +386,109 @@ public class NewsServicesSubscription {
   public String getCbDevelopmentNotifyAtMinute() {
     return cbDevelopmentNotifyAtMinute;
   }
+
+
+
+  public ArrayList<String> getEmailSubscriptions() {
+    return getSubscriptions("Email");
+  }
+
+  public ArrayList<String> getTextSubscriptions() {
+    return getSubscriptions("Text");
+  }
+
+  private ArrayList<String> getSubscriptions(String notifyBy) {
+
+    ArrayList<String> subscriptions = new ArrayList<>();
+
+    if (this.hsaBreakingSubscribe.equals("Yes")) {
+      if (this.hsaBreakingNotifyBy.equals(notifyBy)) {
+        subscriptions.add("hsaBreaking");
+      }
+    }
+
+    if (this.hsaPopularSubscribe.equals("Yes")) {
+      if (this.hsaPopularNotifyBy.equals(notifyBy)) {
+        subscriptions.add("hsaPopular");
+      }
+    }
+
+    if (this.hsaSportsSubscribe.equals("Yes")) {
+      if (this.hsaSportsNotifyBy.equals(notifyBy)) {
+        subscriptions.add("hsaSports");
+      }
+    }
+
+    // Maui News
+    if (this.mnBreakingSubscribe.equals("Yes")) {
+      if (this.mnBreakingNotifyBy.equals(notifyBy)) {
+        subscriptions.add("mnBreaking");
+      }
+    }
+
+    if (this.mnBusinessSubscribe.equals("Yes")) {
+      if (this.mnBusinessNotifyBy.equals(notifyBy)) {
+        subscriptions.add("mnBusiness");
+      }
+    }
+
+    if (this.mnHawaiiSubscribe.equals("Yes")) {
+      if (this.mnHawaiiNotifyBy.equals(notifyBy)) {
+        subscriptions.add("mnHawaii");
+      }
+    }
+
+    if (this.mnLocalSubscribe.equals("Yes")) {
+      if (this.mnLocalNotifyBy.equals(notifyBy)) {
+        subscriptions.add("mnLocal");
+      }
+    }
+
+    // Civil Beat
+    if (this.cbPopularSubscribe.equals("Yes")) {
+      if (this.cbPopularNotifyBy.equals(notifyBy)) {
+        subscriptions.add("cbPopular");
+      }
+    }
+
+    if (this.cbHonoluluSubscribe.equals("Yes")) {
+      if (this.cbHonoluluNotifyBy.equals(notifyBy)) {
+        subscriptions.add("cbHonolulu");
+      }
+    }
+
+    if (this.cbHawaiiSubscribe.equals("Yes")) {
+      if (this.cbHawaiiNotifyBy.equals(notifyBy)) {
+        subscriptions.add("cbHawaii");
+      }
+    }
+
+    if (this.cbEducationSubscribe.equals("Yes")) {
+      if (this.cbEducationNotifyBy.equals(notifyBy)) {
+        subscriptions.add("cbEducation");
+      }
+    }
+
+    if (this.cbPoliticsSubscribe.equals("Yes")) {
+      if (this.cbPoliticsNotifyBy.equals(notifyBy)) {
+        subscriptions.add("cbPolitics");
+      }
+    }
+
+    if (this.cbEnergyAndEnvironmentSubscribe.equals("Yes")) {
+      if (this.cbEnergyAndEnvironmentNotifyBy.equals(notifyBy)) {
+        subscriptions.add("cbEnergyAndEnvironment");
+      }
+    }
+
+    if (this.cbDevelopmentSubscribe.equals("Yes")) {
+      if (this.cbDevelopmentNotifyBy.equals(notifyBy)) {
+        subscriptions.add("cbDevelopment");
+      }
+    }
+
+    return subscriptions;
+
+  }
+
 }
