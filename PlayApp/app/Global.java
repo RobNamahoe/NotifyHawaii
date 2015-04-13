@@ -1,4 +1,3 @@
-import controllers.Communication.SendEmail;
 import models.NewsArticle;
 import models.NewsServiceSubscriptionDB;
 import models.NewsServicesSubscription;
@@ -41,7 +40,7 @@ public class Global extends GlobalSettings {
 
     //printList(list);
 
-    User user = new User(1, "Rob", "Namahoe", "808-343-2159", "rnamahoe@hawaii.edu", "Verizon");
+    User user = new User(1, "Rob", "Namahoe", "8083432159", "rnamahoe@hawaii.edu", "AT&T Wireless");
     UserDB.addUser(user);
 
     NewsServicesFormData formData = new NewsServicesFormData();

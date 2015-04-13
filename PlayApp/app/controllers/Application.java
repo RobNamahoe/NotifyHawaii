@@ -71,8 +71,8 @@ public class Application extends Controller {
    * @return The News services page.
    */
   public static Result news() {
-    NewsServicesFormData data = (currentUserId == 0) ? new NewsServicesFormData() :
-        new NewsServicesFormData(NewsServiceSubscriptionDB.getSubscription(currentUserId));
+    NewsServicesFormData data = (currentUserId == 0) ? new NewsServicesFormData()
+        : new NewsServicesFormData(NewsServiceSubscriptionDB.getSubscription(currentUserId));
     Form<NewsServicesFormData> formData = Form.form(NewsServicesFormData.class).fill(data);
 
     NewsServices.execute(UserDB.getUser(currentUserId), NewsServiceSubscriptionDB.getSubscription(currentUserId));

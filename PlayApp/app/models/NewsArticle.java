@@ -55,6 +55,12 @@ public class NewsArticle {
     return content;
   }
 
-
+  /**
+   * Gets the SMS representation of the article.
+   * @return The SMS representation of the article.
+   */
+  public String getSms() {
+    return this.title + " (" + this.url + ")";
+  }
 
 }

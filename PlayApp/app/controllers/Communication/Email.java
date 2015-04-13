@@ -6,9 +6,15 @@ import org.apache.commons.mail.HtmlEmail;
 /**
  * A class that handles the sending of emails.
  */
-public class SendEmail {
+public class Email {
 
-  public static void sendEmail(String sendTo, String subject, String content) {
+  /**
+   * Sends an email to the specified user.
+   * @param sendTo The email address of the recipient.
+   * @param subject The subject of the email.
+   * @param content The content of the email.
+   */
+  public static void send(String sendTo, String subject, String content) {
 
     String emailAddress = "notifyhawaii@gmail.com";
     String password = "zes5utedraqabAx";
