@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Notifyhawaii : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Notifyhawaii</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/RobNamahoe/NotifyHawaii">View on GitHub</a>
+
+          <h1 id="project_title">Notifyhawaii</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/RobNamahoe/NotifyHawaii/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/RobNamahoe/NotifyHawaii/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="notifyhawaii" class="anchor" href="#notifyhawaii" aria-hidden="true"><span class="octicon octicon-link"></span></a>NotifyHawaii</h1>
+
+<h2>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h2>
+
+<p>The goal of this application is to keep the user informed of specific events so that he can make better, more efficient use of his or her time.</p>
+
+<h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
+
+<p>View the <a href="https://github.com/RobNamahoe/NotifyHawaii/wiki/User-Guide">User Guide</a>.<br>
+View the <a href="https://github.com/RobNamahoe/NotifyHawaii/wiki/Developer-Guide">Developers Guide</a>.</p>
+
+<h2>
+<a id="approach" class="anchor" href="#approach" aria-hidden="true"><span class="octicon octicon-link"></span></a>Approach</h2>
+
+<p>Registered users will be able to select from a predetermined set of services. Each service will allow for notifications to be sent to the user via email or text message when specific events are triggered (such as a new blog entry or a specific bus running ahead of/behind schedule). The triggering events will be monitored through the use of a variety of services including Google Maps, TheBus Web Services API, and Jaunt Web Scraping and Automation tool.</p>
+
+<p>This application will be built using HTML, CSS, Twitter Bootstrap and the Play Web Application Framework. The backend database will be implemented using PostgreSQL and the entire application will be deployed to Heroku. </p>
+
+<h2>
+<a id="deliverable-1" class="anchor" href="#deliverable-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deliverable 1</h2>
+
+<p>Decide on wording and images to be used on the home page and in the description of services on each Service page.
+Bare-bones in-memory database initialized with valid information so notification system can be tested.
+Functional automated sending of email and text messages.
+Functional 'News Services' component: Harvesting of news headlines through the use of the Jaunt Web-Scraper API.</p>
+
+<h2>
+<a id="deliverable-2" class="anchor" href="#deliverable-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deliverable 2</h2>
+
+<p>Persistent data storage with PostgreSQL backend database.
+Functional 'Commute Services' component: Estimating commute time given a specified route using Google Maps and monitoring specific bus schedules using TheBus Web Services API will be implemented.</p>
+
+<h2>
+<a id="deliverable-3" class="anchor" href="#deliverable-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deliverable 3</h2>
+
+<p>Functional 'Blog &amp; Posts Services' component: Able to identify and report new posts on Wordpress, Craigslist.
+Implement Authentication and Authorization.
+Deploy application to Heroku.</p>
+
+<h2>
+<a id="mockup" class="anchor" href="#mockup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mockup</h2>
+
+<p>The application homepage will introduce the user to the application and summarize the service. Users must log in or sign up for an account.
+<img src="https://raw.githubusercontent.com/RobNamahoe/NotifyHawaii/master/mockup/readme/home.png" alt="alt tag">
+After the user logs in, they are taken to the Services page where we present services by category.
+<img src="https://raw.githubusercontent.com/RobNamahoe/NotifyHawaii/master/mockup/readme/Services.png" alt="alt tag">
+Users can choose to receive daily notifications about their favorite news paper...
+<img src="https://raw.githubusercontent.com/RobNamahoe/NotifyHawaii/master/mockup/readme/news.png" alt="alt tag">
+their commute home...
+<img src="https://raw.githubusercontent.com/RobNamahoe/NotifyHawaii/master/mockup/readme/maps.png" alt="alt tag">
+or their favorite blogs.
+<img src="https://raw.githubusercontent.com/RobNamahoe/NotifyHawaii/master/mockup/readme/blogs.png" alt="alt tag">
+Users can edit their contact information and modify and/or delete their current subscriptions from their account page.
+<img src="https://raw.githubusercontent.com/RobNamahoe/NotifyHawaii/master/mockup/readme/account.png" alt="alt tag"></p>
+
+<h2>
+<a id="mobile-first" class="anchor" href="#mobile-first" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mobile First</h2>
+
+<p>We strived to build this application from the ground up from a 'mobile first' approach. All of the pages use modern techniques to provide a responsive design so the application is just as powerful on a phone as it is on a desktop computer. Here's what the app looks like in mobile view:</p>
+
+<p>Choose from a variety of services.</p>
+
+<p><img src="https://raw.githubusercontent.com/RobNamahoe/NotifyHawaii/master/doc/images/services-mobile.png" alt="alt tag"></p>
+
+<p>Subscribe to a service.</p>
+
+<p><img src="https://github.com/RobNamahoe/NotifyHawaii/blob/master/doc/images/news-mobile.png" alt="alt tag"></p>
+
+<p>Access your account and update your contact info or current subscriptions.</p>
+
+<p><img src="https://github.com/RobNamahoe/NotifyHawaii/blob/master/doc/images/account-mobile.png" alt="alt tag"></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Notifyhawaii maintained by <a href="https://github.com/RobNamahoe">RobNamahoe</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
