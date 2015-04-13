@@ -42,3 +42,20 @@ or their favorite blogs.
 ![alt tag](https://raw.githubusercontent.com/RobNamahoe/NotifyHawaii/master/mockup/readme/blogs.png)
 Users can edit their contact information and modify and/or delete their current subscriptions from their account page.
 ![alt tag](https://raw.githubusercontent.com/RobNamahoe/NotifyHawaii/master/mockup/readme/account.png)
+
+Mobile First
+------------
+We strived to build this application from the ground up from a 'mobile first' approach. All of the pages use modern techniques to provide a responsive design so the application is just as powerful on a phone as it is on a desktop computer. Here's what the app looks like in mobile view:
+
+Choose from a variety of services.
+
+![alt tag](https://raw.githubusercontent.com/RobNamahoe/NotifyHawaii/master/doc/images/services-mobile.png)
+
+Subscribe to a service.
+
+![alt tag](https://github.com/RobNamahoe/NotifyHawaii/blob/master/doc/images/news-mobile.png)
+
+Access your account and update your contact info or current subscriptions.
+
+![alt tag](https://github.com/RobNamahoe/NotifyHawaii/blob/master/doc/images/account-mobile.png)
+
