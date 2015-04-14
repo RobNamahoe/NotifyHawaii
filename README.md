@@ -4,6 +4,9 @@ Overview
 --------
 The goal of this application is to keep the user informed of specific events so that he can make better, more efficient use of his or her time.
 
+View the [deployed application](http://www.notifyhawaii.com/) on Heroku.<br>
+View this projects [GitHub Page](http://robnamahoe.github.io/NotifyHawaii/).
+
 Documentation
 -------------
 View the [User Guide](https://github.com/RobNamahoe/NotifyHawaii/wiki/User-Guide).<br>
