@@ -75,7 +75,7 @@ public class Application extends Controller {
         : new NewsServicesFormData(NewsServiceSubscriptionDB.getSubscription(currentUserId));
     Form<NewsServicesFormData> formData = Form.form(NewsServicesFormData.class).fill(data);
 
-    NewsServices.execute(UserDB.getUser(currentUserId), NewsServiceSubscriptionDB.getSubscription(currentUserId));
+    //NewsServices.execute(UserDB.getUser(currentUserId), NewsServiceSubscriptionDB.getSubscription(currentUserId));
 
     return ok(News.render("News Services", formData, NewsServiceSubscriptionDB.getSubscription(currentUserId)));
   }
