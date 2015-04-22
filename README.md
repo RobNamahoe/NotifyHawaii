@@ -4,6 +4,8 @@ Overview
 --------
 Notify Hawai'i is a web based application with a single goal: to deliver useful information to its users in the form of customized notifications. 
 
+![alt tag](https://github.com/RobNamahoe/NotifyHawaii/blob/master/doc/images/home.png)
+
 Approach
 --------
 Registered users will be able to select from a set of services related to local sources of information (i.e. within Hawai'i). Each service will allow for notifications to be sent to the user via email or text message when specific events are triggered (such as a new blog entry in a local forum or a specific bus running ahead of/behind schedule). The triggering events will be monitored through the use of a variety of services including Google Maps, TheBus Web Services API, and Jaunt Web Scraping and Automation tool.
