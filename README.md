@@ -4,7 +4,7 @@ Overview
 --------
 Notify Hawai'i is a web based application with a single goal: to deliver useful information to its users in the form of customized notifications. 
 
-![alt tag](https://github.com/RobNamahoe/NotifyHawaii/blob/master/doc/images/home.png)
+![alt tag](https://raw.githubusercontent.com/RobNamahoe/NotifyHawaii/master/doc/images/home.png)
 
 Approach
 --------
