@@ -24,4 +24,6 @@ View the [Developers Guide](https://github.com/RobNamahoe/NotifyHawaii/wiki/Deve
 Access the Application
 ----------------------
 View the [deployed application](http://www.notifyhawaii.com/) on Heroku.<br>
-View this projects [GitHub Page](http://robnamahoe.github.io/NotifyHawaii/).
+View this projects [GitHub Page](http://robnamahoe.github.io/NotifyHawaii/)
+
+If you've got any questions, comments or suggestions for improvements, we'd love to hear from you! Here is how you can [get in touch with us](https://github.com/RobNamahoe/NotifyHawaii/wiki/Contact-Us).
