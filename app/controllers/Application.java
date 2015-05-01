@@ -1,9 +1,8 @@
 package controllers;
 
-import controllers.NewsServices.NewsServices;
 import models.NewsServiceSubscriptionDB;
 import models.NewsServicesSubscription;
-import models.UserDB;
+import models.UserInfoDB;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -37,7 +36,7 @@ public class Application extends Controller {
    * @return The Account page.
    */
   public static Result account() {
-    UserFormData data = new UserFormData(UserDB.getUser(currentUserId));
+    UserFormData data = new UserFormData(UserInfoDB.getUser(currentUserId));
     Form<UserFormData> formData = Form.form(UserFormData.class).fill(data);
     return ok(Account.render("Welcome to Your Account Page.", formData, ServiceProviders.getCarriers(data.carrier)));
   }
@@ -104,7 +103,7 @@ public class Application extends Controller {
     }
     else {
       UserFormData formData = userForm.get();
-      UserDB.updateUser(formData);
+      UserInfoDB.updateUser(formData);
       return ok(Account.render("Account", userForm, ServiceProviders.getCarriers(formData.carrier)));
     }
 

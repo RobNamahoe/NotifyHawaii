@@ -2,7 +2,7 @@ package views.formdata;
 
 import java.util.ArrayList;
 import java.util.List;
-import models.User;
+import models.UserInfo;
 import play.data.validation.ValidationError;
 
 /**
@@ -56,13 +56,13 @@ public class UserFormData {
    * Creates an instance of a user initialized with information from the given User object.
    * @param user The current user.
    */
-  public UserFormData(User user) {
+  public UserFormData(UserInfo user) {
     this.id = user.getId();
     this.firstName = user.getFirstName();
     this.lastName = user.getLastName();
     this.email = user.getEmail();
     this.telephone = user.getTelephone();
-    this.carrier = user.getCarrier();
+    this.carrier = user.getCarrier().getName();
   }
 
   /**

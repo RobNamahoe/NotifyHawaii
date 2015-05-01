@@ -4,7 +4,7 @@ import controllers.Communication.Email;
 import controllers.Communication.TextMessage;
 import models.NewsArticle;
 import models.NewsServicesSubscription;
-import models.User;
+import models.UserInfo;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public class NewsServices {
    * @param user The current user.
    * @param subscription The users subscriptions.
    */
-  public static void execute(User user, NewsServicesSubscription subscription) {
+  public static void execute(UserInfo user, NewsServicesSubscription subscription) {
 
     String content;
 
@@ -33,7 +33,7 @@ public class NewsServices {
 
     if (list.size() > 0) {
       content = getSmsContent(list);
-      TextMessage.send(user.getTelephone(), user.getCarrier(), content);
+      TextMessage.send(user.getTelephone(), user.getCarrier().getName(), content);
     }
 
   }

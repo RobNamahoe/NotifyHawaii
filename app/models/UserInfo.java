@@ -1,30 +1,47 @@
 package models;
 
+import play.db.ebean.Model;
 import views.formdata.UserFormData;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import java.util.List;
 
 /**
  * Representation of users of the system.
  */
-public class User {
+@Entity
+public class UserInfo extends Model {
 
+  @Id
   private long id;
+
   private String firstName;
   private String lastName;
   private String telephone;
   private String email;
-  private String carrier;
+
+  // Many of me (UserInfo) maps to one of the following (Carrier)
+  @ManyToOne(cascade = CascadeType.PERSIST)
+  private Carrier carrier;
+
+  // Many of me (UserInfo) maps to many of the following (Subscription)
+  @ManyToMany(cascade = CascadeType.PERSIST)
+  private List<Subscription> subscriptions;
+
 
   /**
    * Creates a new user instance.
-   * @param id The users id.
    * @param firstName The users first name.
    * @param lastName The users last name.
    * @param telephone The users telephone number.
    * @param email The users email address.
    * @param carrier The users cell telephone carrier.
    */
-  public User(long id, String firstName, String lastName, String telephone, String email, String carrier) {
-    this.id = id;
+  public UserInfo(String firstName, String lastName, String telephone, String email, Carrier carrier) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.telephone = telephone;
@@ -36,15 +53,22 @@ public class User {
    * Creates a new user instance from a UserFormData object.
    * @param data A UserFormData object.
    */
-  public User(UserFormData data) {
-    this.id = data.id;
+  public UserInfo(UserFormData data) {
     this.firstName = data.firstName;
     this.lastName = data.lastName;
     this.telephone = data.telephone;
     this.email = data.email;
-    this.carrier = data.carrier;
+    this.carrier = Carrier.find().where().eq("name", data.carrier).findUnique();
   }
 
+
+  /**
+   * The EBean ORM finder method for database queries.
+   * @return The finder method.
+   */
+  public static Finder<Long, UserInfo> find() {
+    return new Finder<Long, UserInfo>(Long.class, UserInfo.class);
+  }
 
   /**
    * Gets the users id.
@@ -90,7 +114,7 @@ public class User {
    * Gets the users cell telephone service provider.
    * @return The cell telephone carrier.
    */
-  public String getCarrier() {
+  public Carrier getCarrier() {
     return carrier;
   }
 
@@ -138,7 +162,8 @@ public class User {
    * Sets the users cell phone carrier.
    * @param carrier The users carrier.
    */
-  public void setCarrier(String carrier) {
+  public void setCarrier(Carrier carrier) {
     this.carrier = carrier;
   }
+
 }
