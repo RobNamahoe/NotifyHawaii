@@ -25,13 +25,6 @@ create table subscription (
   constraint pk_subscription primary key (id))
 ;
 
-create table subscription_db (
-  id                        bigint not null,
-  type                      varchar(255),
-  name                      varchar(255),
-  constraint pk_subscription_db primary key (id))
-;
-
 create table user_info (
   id                        bigint not null,
   first_name                varchar(255),
@@ -54,8 +47,6 @@ create sequence news_article_seq;
 
 create sequence subscription_seq;
 
-create sequence subscription_db_seq;
-
 create sequence user_info_seq;
 
 alter table user_info add constraint fk_user_info_carrier_1 foreign key (carrier_id) references carrier (id);
@@ -77,8 +68,6 @@ drop table if exists subscription cascade;
 
 drop table if exists user_info_subscription cascade;
 
-drop table if exists subscription_db cascade;
-
 drop table if exists user_info cascade;
 
 drop sequence if exists carrier_seq;
@@ -86,8 +75,6 @@ drop sequence if exists carrier_seq;
 drop sequence if exists news_article_seq;
 
 drop sequence if exists subscription_seq;
-
-drop sequence if exists subscription_db_seq;
 
 drop sequence if exists user_info_seq;
 
