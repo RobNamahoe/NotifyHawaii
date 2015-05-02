@@ -1,0 +1,130 @@
+@(page: String, isLoggedIn: Boolean, userInfo: UserInfo, display: String, carrierMap: Map[String, Boolean],
+        loginForm: Form[views.formdata.LoginFormData], regForm: Form[views.formdata.RegistrationFormData])
+
+@import helper._
+@import bootstrap3._
+
+@Main("Login") {
+
+    <div class="container">
+        <div id="loginbox" style="@if(display == "registration") {display:none;} margin-top:50px;"
+            class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info panel-login" >
+                <div class="panel-heading">
+                    <div class="panel-title">Sign In</div>
+                </div>
+
+                <div style="padding: 30px 15px 0 15px" class="panel-body" >
+
+                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                    @form(routes.Application.postLogin(), 'id -> "loginform", 'class -> "form-horizontal", 'role -> "form") {
+                        <fieldset>
+                            <!-- Email Address -->
+                            <div class="form-group @if(loginForm("email").hasErrors) {has-error}" >
+                                <div style="margin: 0px 15px 0px 15px" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input id="email" type="text" class="form-control" name="email" value="" placeholder="email">
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="form-group @if(loginForm("password").hasErrors) {has-error}" >
+                                <div style="margin: 0px 15px 10px 15px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input id="password" type="password" class="form-control" name="password" placeholder="password">
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div style="margin: 10px 0px 10px 0px" class="form-group">
+                                <div class="col-sm-12 controls">
+                                    <button id="btn-login" type="submit" class="btn btn-success">Login  </button>
+                                </div>
+                            </div>
+
+                            <!-- Flash an error if necessary -->
+                            @if(flash.containsKey("error")) {
+                                <div style="margin: 0px 0px 10px 15px" id="error-message" class="text-danger">
+                                @flash.get("error")
+                                </div>
+                            }
+
+                            <!-- Sign Up Link -->
+                            <div class="form-group">
+                                <div class="col-md-12 control">
+                                    <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                        &nbsp &nbsp Don't have an account?
+                                        <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                            Sign Up Here
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div id="signupbox" style="@if(display == "login") {display:none;} margin-top:50px"
+            class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info panel-login">
+
+                <div class="panel-heading">
+                    <div class="panel-title">Sign Up</div>
+                </div>
+
+                <div class="panel-body" >
+                    @form(routes.Application.postRegistration(), 'id -> "signupform", 'class -> "form-horizontal", 'role -> "form") {
+
+                        @registrationText(regForm("regFirstName"),
+                            label="First Name",
+                            placeholder="First Name")
+
+                        @registrationText(regForm("regLastName"),
+                            label="Last Name",
+                            placeholder="Last Name")
+
+                        @registrationText(regForm("regEmail"),
+                            label="Email",
+                            placeholder="Email Address")
+
+                        @registrationText(regForm("regPhone"),
+                            label="Mobile Phone",
+                            placeholder="###-###-####")
+
+                        @bootstrap3.select(regForm("regCarrier"),
+                            label="MobileCarrier",
+                            optionMap=carrierMap,
+                            isMultiple=false,
+                            help="")
+
+                        @password(regForm("regPassword"))
+
+                        <!-- Submit Button -->
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button id="btn-signup" type="submit" class="btn btn-success">Sign Up</button>
+                            </div>
+                        </div>
+
+                        <!-- Sign in link -->
+                        <div class="form-group">
+                            <div class="col-md-12 control">
+                                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                    Already have an account?
+                                        <a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">
+                                        Sign In Here
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+}

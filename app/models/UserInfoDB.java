@@ -14,7 +14,7 @@ public class UserInfoDB {
    */
   public static void addUser(UserFormData data) {
     Carrier carrier = Carrier.find().where().eq("name", data.carrier).findUnique();
-    UserInfo user = new UserInfo(data.firstName, data.lastName, data.telephone, data.email, carrier);
+    UserInfo user = new UserInfo(data.firstName, data.lastName, data.telephone, data.email, carrier, data.password);
 
     // Make relationships bi-directional
     carrier.addUser(user);
@@ -39,6 +39,20 @@ public class UserInfoDB {
     UserInfo user = UserInfo.find().byId(id);
     if (user == null) {
       throw new RuntimeException("A user with that id does not exist in the database.");
+    }
+    return user;
+  }
+
+  /**
+   * Gets the user with the specified email.
+   * @param email The email of the user to get.
+   * @return The user.
+   */
+  public static UserInfo getUser(String email) {
+    System.out.println("Email: " + email);
+    UserInfo user = UserInfo.find().where().eq("email", email).findUnique();
+    if (user == null) {
+      //throw new RuntimeException("A user with that email does not exist in the database.");
     }
     return user;
   }
@@ -74,10 +88,25 @@ public class UserInfoDB {
    * @param email The email.
    * @return True if the user with the given email exists.
    */
-  public static Boolean userExists(String email) {
+  public static Boolean isUser(String email) {
     UserInfo user = UserInfo.find().where().eq("email", email).findUnique();
     return (user != null);
   }
 
+  /**
+   * Returns true if email and password are valid credentials.
+   * @param email The email.
+   * @param password The password.
+   * @return True if email is a valid user email and password is valid for that email.
+   */
+  public static boolean isValid(String email, String password) {
+    return ((email != null)
+        &&
+        (password != null)
+        &&
+        isUser(email)
+        &&
+        getUser(email).getPassword().equals(password));
+  }
 
 }

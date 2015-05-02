@@ -46,10 +46,10 @@ public class Global extends GlobalSettings {
 
     addCarriers();
 
-    if (!UserInfoDB.userExists("rnamahoe@somewhere.com")) {
+    if (!UserInfoDB.isUser("rnamahoe@somewhere.com")) {
       Carrier carrier = Carrier.find().where().eq("name", "AT&T Wireless").findUnique();
 
-    UserInfo user = new UserInfo("Rob", "Namahoe", "8085551234", "rnamahoe@somewhere.com", carrier);
+    UserInfo user = new UserInfo("Rob", "Namahoe", "8085551234", "rnamahoe@somewhere.com", carrier, "admin");
     UserInfoDB.addUser(user);
 
       NewsServicesFormData formData = new NewsServicesFormData();

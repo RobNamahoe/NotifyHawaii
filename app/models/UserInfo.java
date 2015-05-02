@@ -23,6 +23,7 @@ public class UserInfo extends Model {
   private String lastName;
   private String telephone;
   private String email;
+  private String password;
 
   // Many of me (UserInfo) maps to one of the following (Carrier)
   @ManyToOne(cascade = CascadeType.PERSIST)
@@ -40,13 +41,15 @@ public class UserInfo extends Model {
    * @param telephone The users telephone number.
    * @param email The users email address.
    * @param carrier The users cell telephone carrier.
+   * @param password The users password.
    */
-  public UserInfo(String firstName, String lastName, String telephone, String email, Carrier carrier) {
+  public UserInfo(String firstName, String lastName, String telephone, String email, Carrier carrier, String password) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.telephone = telephone;
     this.email = email;
     this.carrier = carrier;
+    this.password = password;
   }
 
   /**
@@ -59,6 +62,7 @@ public class UserInfo extends Model {
     this.telephone = data.telephone;
     this.email = data.email;
     this.carrier = Carrier.find().where().eq("name", data.carrier).findUnique();
+    this.password = data.password;
   }
 
 
@@ -164,6 +168,38 @@ public class UserInfo extends Model {
    */
   public void setCarrier(Carrier carrier) {
     this.carrier = carrier;
+  }
+
+  /**
+   * Gets the users password.
+   * @return The password.
+   */
+  public String getPassword() {
+    return password;
+  }
+
+  /**
+   * Sets the users password.
+   * @param password The password.
+   */
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  /**
+   * Gets a list of the users current subscriptions.
+   * @return A list of subscriptions.
+   */
+  public List<Subscription> getSubscriptions() {
+    return subscriptions;
+  }
+
+  /**
+   * Sets the list of the users current subscriptions.
+   * @param subscriptions A list of the current subscriptions.
+   */
+  public void setSubscriptions(List<Subscription> subscriptions) {
+    this.subscriptions = subscriptions;
   }
 
 }
