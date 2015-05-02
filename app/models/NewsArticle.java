@@ -1,9 +1,18 @@
 package models;
 
+import play.db.ebean.Model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Representation of a News Story.
  */
-public class NewsArticle {
+@Entity
+public class NewsArticle extends Model {
+
+  @Id
+  private long id;
 
   private String url = "";
   private String title = "";
@@ -19,6 +28,14 @@ public class NewsArticle {
     this.url = url.trim();
     this.title = title.trim();
     this.summary = summary.trim();
+  }
+
+  /**
+   * The EBean ORM finder method for database queries.
+   * @return The finder method.
+   */
+  public static Finder<Long, NewsArticle> find() {
+    return new Finder<Long, NewsArticle>(Long.class, NewsArticle.class);
   }
 
   /**
@@ -43,6 +60,47 @@ public class NewsArticle {
    */
   public String getSummary() {
     return this.summary;
+  }
+
+
+  /**
+   * Gets the id.
+   * @return The id.
+   */
+  public long getId() {
+    return id;
+  }
+
+  /**
+   * Sets the id.
+   * @param id The id.
+   */
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  /**
+   * Sets the url.
+   * @param url The url.
+   */
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+  /**
+   * Sets the title.
+   * @param title The title.
+   */
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  /**
+   * Sets the summary.
+   * @param summary The summary.
+   */
+  public void setSummary(String summary) {
+    this.summary = summary;
   }
 
   /**

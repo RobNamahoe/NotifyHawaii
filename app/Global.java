@@ -1,8 +1,10 @@
+import models.Carrier;
+import models.CarrierDB;
 import models.NewsArticle;
 import models.NewsServiceSubscriptionDB;
 import models.NewsServicesSubscription;
-import models.User;
-import models.UserDB;
+import models.UserInfo;
+import models.UserInfoDB;
 import play.Application;
 import play.GlobalSettings;
 import views.formdata.NewsServicesFormData;
@@ -40,13 +42,21 @@ public class Global extends GlobalSettings {
 
     //printList(list);
 
-    User user = new User(1, "Rob", "Namahoe", "8085551234", "rnamahoe@somewhere.com", "AT&T Wireless");
-    UserDB.addUser(user);
+    // Initialize the database
 
-    NewsServicesFormData formData = new NewsServicesFormData();
-    NewsServicesSubscription data = new NewsServicesSubscription(formData);
-    NewsServiceSubscriptionDB.addSubscription(1, data);
+    addCarriers();
 
+    if (!UserInfoDB.isUser("admin@notifyhawaii.com")) {
+      Carrier carrier = Carrier.find().where().eq("name", "AT&T Wireless").findUnique();
+
+    UserInfo user = new UserInfo("Notify", "Hawaii", "8085551234", "admin@notifyhawaii.com", carrier, "password");
+    UserInfoDB.addUser(user);
+
+      NewsServicesFormData formData = new NewsServicesFormData();
+      NewsServicesSubscription data = new NewsServicesSubscription(formData);
+      NewsServiceSubscriptionDB.addSubscription(1, data);
+
+    }
   }
 
   /**
@@ -61,5 +71,26 @@ public class Global extends GlobalSettings {
       System.out.println("------------------");
     }
   }
+
+  /**
+   * Initializes the database with a list of carriers.
+   */
+  private void addCarriers() {
+    if (CarrierDB.getCount() == 0) {
+      CarrierDB.addCarrier("Alltel Wireless", "@text.wireless.alltel.com");
+      CarrierDB.addCarrier("AT&T Wireless", "@txt.att.net");
+      CarrierDB.addCarrier("AT&T Mobility (formerly Cingular)", "@cingularme.com");
+      CarrierDB.addCarrier("Boost Mobile", "@myboostmobile.com");
+      CarrierDB.addCarrier("Cricket", "@sms.mycricket.com");
+      CarrierDB.addCarrier("Metro PCS", "@mymetropcs.com");
+      CarrierDB.addCarrier("Sprint (PCS)", "@messaging.sprintpcs.com");
+      CarrierDB.addCarrier("Sprint (Nextel)", "@page.nextel.com");
+      CarrierDB.addCarrier("Straight Talk", "@VTEXT.COM");
+      CarrierDB.addCarrier("T-Mobile", "@tmomail.net");
+      CarrierDB.addCarrier("U.S. Cellular", "@email.uscc.net");
+      CarrierDB.addCarrier("Verizon", "@vtext.com");
+    }
+  }
+
 
 }

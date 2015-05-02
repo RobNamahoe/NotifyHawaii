@@ -2,7 +2,7 @@ package views.formdata;
 
 import java.util.ArrayList;
 import java.util.List;
-import models.User;
+import models.UserInfo;
 import play.data.validation.ValidationError;
 
 /**
@@ -29,6 +29,9 @@ public class UserFormData {
   /** The users mobile telephone service provider. */
   public String carrier;
 
+  /** The users password. */
+  public String password;
+
   /**
    * Default Constructor method.
    */
@@ -43,26 +46,30 @@ public class UserFormData {
    * @param email The users email address.
    * @param telephone The users telephone number.
    * @param carrier The users cell telephone carrier.
+   * @param password The users password.
    */
-  public UserFormData(String firstName, String lastName, String email, String telephone, String carrier) {
+  public UserFormData(String firstName, String lastName, String email, String telephone,
+                      String carrier, String password) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
     this.telephone = telephone;
     this.carrier = carrier;
+    this.password = password;
   }
 
   /**
    * Creates an instance of a user initialized with information from the given User object.
    * @param user The current user.
    */
-  public UserFormData(User user) {
+  public UserFormData(UserInfo user) {
     this.id = user.getId();
     this.firstName = user.getFirstName();
     this.lastName = user.getLastName();
     this.email = user.getEmail();
     this.telephone = user.getTelephone();
-    this.carrier = user.getCarrier();
+    this.carrier = user.getCarrier().getName();
+    this.password = user.getPassword();
   }
 
   /**

@@ -1,9 +1,9 @@
-@(message: String, userForm: Form[views.formdata.UserFormData], carrierMap: Map[String, Boolean])
+@(message: String, isLoggedIn: Boolean, userInfo: UserInfo, userForm: Form[views.formdata.UserFormData], carrierMap: Map[String, Boolean])
 
 @import helper._
 @import views.html.bootstrap3._
 
-@Main("Account") {
+@Main("Account", isLoggedIn, userInfo) {
     <div class="container">
 
         <!-- Begin Preferences Section -->

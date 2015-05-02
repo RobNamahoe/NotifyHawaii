@@ -1,9 +1,10 @@
-@(message: String, newsServicesForm: Form[views.formdata.NewsServicesFormData], data: NewsServicesSubscription)
+@(message: String, isLoggedIn: Boolean, userInfo: UserInfo,
+        newsServicesForm: Form[views.formdata.NewsServicesFormData], data: NewsServicesSubscription)
 
 @import helper._
 @import views.html.bootstrap3._
 
-@Main("News Services") {
+@Main("News Services", isLoggedIn, userInfo) {
     <div class="container">
     @form(routes.Application.updateNewsSubscriptions()) {
         <h1>News Services</h1>
