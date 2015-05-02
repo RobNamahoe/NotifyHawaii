@@ -4,7 +4,7 @@
 @import helper._
 @import bootstrap3._
 
-@Main("Login") {
+@Main("Login", isLoggedIn, userInfo) {
 
     <div class="container">
         <div id="loginbox" style="@if(display == "registration") {display:none;} margin-top:50px;"
@@ -76,7 +76,6 @@
 
                 <div class="panel-body" >
                     @form(routes.Application.postRegistration(), 'id -> "signupform", 'class -> "form-horizontal", 'role -> "form") {
-
                         @registrationText(regForm("regFirstName"),
                             label="First Name",
                             placeholder="First Name")
@@ -93,8 +92,8 @@
                             label="Mobile Phone",
                             placeholder="###-###-####")
 
-                        @bootstrap3.select(regForm("regCarrier"),
-                            label="MobileCarrier",
+                        @registrationSelect(regForm("regCarrier"),
+                            label="Mobile Carrier",
                             optionMap=carrierMap,
                             isMultiple=false,
                             help="")

@@ -50,30 +50,26 @@ create sequence subscription_seq;
 
 create sequence user_info_seq;
 
-alter table user_info add constraint fk_user_info_carrier_1 foreign key (carrier_id) references carrier (id) on delete restrict on update restrict;
+alter table user_info add constraint fk_user_info_carrier_1 foreign key (carrier_id) references carrier (id);
 create index ix_user_info_carrier_1 on user_info (carrier_id);
 
 
 
-alter table user_info_subscription add constraint fk_user_info_subscription_use_01 foreign key (user_info_id) references user_info (id) on delete restrict on update restrict;
+alter table user_info_subscription add constraint fk_user_info_subscription_use_01 foreign key (user_info_id) references user_info (id);
 
-alter table user_info_subscription add constraint fk_user_info_subscription_sub_02 foreign key (subscription_id) references subscription (id) on delete restrict on update restrict;
+alter table user_info_subscription add constraint fk_user_info_subscription_sub_02 foreign key (subscription_id) references subscription (id);
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+drop table if exists carrier cascade;
 
-drop table if exists carrier;
+drop table if exists news_article cascade;
 
-drop table if exists news_article;
+drop table if exists subscription cascade;
 
-drop table if exists subscription;
+drop table if exists user_info_subscription cascade;
 
-drop table if exists user_info_subscription;
-
-drop table if exists user_info;
-
-SET REFERENTIAL_INTEGRITY TRUE;
+drop table if exists user_info cascade;
 
 drop sequence if exists carrier_seq;
 

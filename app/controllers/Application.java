@@ -8,6 +8,7 @@ import models.UserInfoDB;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 import views.formdata.LoginFormData;
 import views.formdata.NewsServicesFormData;
 import views.formdata.RegistrationFormData;
@@ -33,15 +34,17 @@ public class Application extends Controller {
    * @return The resulting home page.
    */
   public static Result index() {
-    return ok(Index.render("Welcome to the home page"));
+    return ok(Index.render("Welcome to the home page", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
   }
-
 
   /**
    * Provides the Login page (only to unauthenticated users).
    * @return The Login page.
    */
   public static Result login() {
+    if (Secured.isLoggedIn(ctx())) {
+      return redirect(routes.Application.services());
+    }
     Form<LoginFormData> loginFormData = Form.form(LoginFormData.class);
     Form<RegistrationFormData> regFormData = Form.form(RegistrationFormData.class);
     return ok(Login.render("Login", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), "login",
@@ -49,43 +52,74 @@ public class Application extends Controller {
   }
 
   /**
+   * Provides the registration page (only to unauthenticated users).
+   * @return The Registration page.
+   */
+  public static Result registration() {
+    if (Secured.isLoggedIn(ctx())) {
+      return redirect(routes.Application.services());
+    }
+    Form<LoginFormData> loginFormData = Form.form(LoginFormData.class);
+    Form<RegistrationFormData> regFormData = Form.form(RegistrationFormData.class);
+    return ok(Login.render("Login", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), "registration",
+        CarrierDB.getCarrierMap(), loginFormData, regFormData));
+  }
+
+
+  /**
+   * Logs out (only for authenticated users) and returns them to the Index page.
+   * @return A redirect to the Index page.
+   */
+  @Security.Authenticated(Secured.class)
+  public static Result logout() {
+    session().clear();
+    return redirect(routes.Application.index());
+  }
+
+  /**
    * Returns the users account page.
    * @return The Account page.
    */
+  @Security.Authenticated(Secured.class)
   public static Result account() {
     UserFormData data = new UserFormData(UserInfoDB.getUser(currentUserId));
     Form<UserFormData> formData = Form.form(UserFormData.class).fill(data);
-    return ok(Account.render("Welcome to Your Account Page.", formData, ServiceProviders.getCarriers(data.carrier)));
+    return ok(Account.render("Welcome to Your Account Page.", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()),
+        formData, ServiceProviders.getCarriers(data.carrier)));
   }
 
   /**
    * Returns the Services page.
    * @return The Services page.
    */
+  @Security.Authenticated(Secured.class)
   public static Result services() {
-    return ok(Services.render("Current Services"));
+    return ok(Services.render("Current Services", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
   }
 
   /**
    * Returns the Blogs services page.
    * @return The Blogs services page.
    */
+  @Security.Authenticated(Secured.class)
   public static Result blogs() {
-    return ok(Blogs.render("Blog Services"));
+    return ok(Blogs.render("Blog Services", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
   }
 
   /**
    * Returns the Commute services page.
    * @return The Commute services page.
    */
+  @Security.Authenticated(Secured.class)
   public static Result commute() {
-    return ok(Commute.render("Commute Services"));
+    return ok(Commute.render("Commute Services", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
   }
 
   /**
    * Returns the News services page.
    * @return The News services page.
    */
+  @Security.Authenticated(Secured.class)
   public static Result news() {
     NewsServicesFormData data = (currentUserId == 0) ? new NewsServicesFormData()
         : new NewsServicesFormData(NewsServiceSubscriptionDB.getSubscription(currentUserId));
@@ -93,13 +127,15 @@ public class Application extends Controller {
 
     //NewsServices.execute(UserDB.getUser(currentUserId), NewsServiceSubscriptionDB.getSubscription(currentUserId));
 
-    return ok(News.render("News Services", formData, NewsServiceSubscriptionDB.getSubscription(currentUserId)));
+    return ok(News.render("News Services", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), formData,
+        NewsServiceSubscriptionDB.getSubscription(currentUserId)));
   }
 
   /**
    * Update the current users News subscriptions.
    * @return Redirect to the news page.
    */
+  @Security.Authenticated(Secured.class)
   public static Result updateNewsSubscriptions() {
     Form<NewsServicesFormData> formData = Form.form(NewsServicesFormData.class).bindFromRequest();
     NewsServicesFormData data = formData.get();
@@ -111,21 +147,22 @@ public class Application extends Controller {
    * Updates the current users contact information.
    * @return The Account page with updated information.
    */
+  @Security.Authenticated(Secured.class)
   public static Result updateUserInfo() {
 
     Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
 
     if (userForm.hasErrors()) {
-      return badRequest(Account.render("Account", userForm, ServiceProviders.getCarriers()));
+      return badRequest(Account.render("Account", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()),
+          userForm, ServiceProviders.getCarriers()));
     }
     else {
       UserFormData formData = userForm.get();
       UserInfoDB.updateUser(formData);
-      return ok(Account.render("Account", userForm, ServiceProviders.getCarriers(formData.carrier)));
+      return ok(Account.render("Account", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()),
+          userForm, ServiceProviders.getCarriers(formData.carrier)));
     }
   }
-
-  // TODO
 
   /**
    * Processes a login form submission from an unauthenticated user.
@@ -143,7 +180,6 @@ public class Application extends Controller {
 
     if (loginFormData.hasErrors()) {
       flash("error", "Login credentials are not valid.");
-
       return badRequest(Login.render("Login", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()),
           "login", CarrierDB.getCarrierMap(), loginFormData, regFormData));
     }
@@ -151,9 +187,7 @@ public class Application extends Controller {
       // email/password OK, so now we set the session variable and only go to authenticated pages.
       session().clear();
       session("email", loginFormData.get().email);
-      System.out.println("Authentication OK: " + loginFormData.get().email + ", " + loginFormData.get().password);
-      return redirect(routes.Application.index());
-
+      return redirect(routes.Application.services());
     }
   }
 
@@ -164,9 +198,6 @@ public class Application extends Controller {
    * @return The services page if successful, registration page if not.
    */
   public static Result postRegistration() {
-    System.out.println("Post Login method called from post Registration");
-
-
     // Get the submitted form data from the request object, and run validation.
     Form<RegistrationFormData> regFormData = Form.form(RegistrationFormData.class).bindFromRequest();
     Form<LoginFormData> loginFormData = Form.form(LoginFormData.class);
@@ -186,7 +217,7 @@ public class Application extends Controller {
           CarrierDB.getCarrier(data.regCarrier), data.regPassword);
       UserInfoDB.addUser(newUser);
 
-      return redirect(routes.Application.index());
+      return redirect(routes.Application.services());
     }
 
 

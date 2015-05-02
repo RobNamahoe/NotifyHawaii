@@ -1,6 +1,6 @@
-@(message: String)
+@(message: String, isLoggedIn: Boolean, userInfo: UserInfo)
 
-@Main("Blog Services") {
+@Main("Blog Services", isLoggedIn, userInfo) {
     <div class="container">
         <h1>Blogs & Posts Services</h1>
 

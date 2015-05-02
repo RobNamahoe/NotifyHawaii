@@ -49,7 +49,6 @@ public class UserInfoDB {
    * @return The user.
    */
   public static UserInfo getUser(String email) {
-    System.out.println("Email: " + email);
     UserInfo user = UserInfo.find().where().eq("email", email).findUnique();
     if (user == null) {
       //throw new RuntimeException("A user with that email does not exist in the database.");

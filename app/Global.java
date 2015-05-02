@@ -46,10 +46,10 @@ public class Global extends GlobalSettings {
 
     addCarriers();
 
-    if (!UserInfoDB.isUser("rnamahoe@somewhere.com")) {
+    if (!UserInfoDB.isUser("admin@notifyhawaii.com")) {
       Carrier carrier = Carrier.find().where().eq("name", "AT&T Wireless").findUnique();
 
-    UserInfo user = new UserInfo("Rob", "Namahoe", "8085551234", "rnamahoe@somewhere.com", carrier, "admin");
+    UserInfo user = new UserInfo("Notify", "Hawaii", "8085551234", "admin@notifyhawaii.com", carrier, "password");
     UserInfoDB.addUser(user);
 
       NewsServicesFormData formData = new NewsServicesFormData();
@@ -57,9 +57,6 @@ public class Global extends GlobalSettings {
       NewsServiceSubscriptionDB.addSubscription(1, data);
 
     }
-
-
-
   }
 
   /**
