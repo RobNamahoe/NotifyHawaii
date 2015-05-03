@@ -46,19 +46,19 @@ public class NewsPage extends FluentPage {
     find("select", withId("hsaBreakingSubscribe")).find("option", withId(subscribe)).click();
     find("select", withId("hsaBreakingNotifyBy")).find("option", withId(notifyBy)).click();
     find("select", withId("hsaBreakingNotifyAtHour")).find("option", withId(notifyHour)).click();
-    find("select", withId("hsaBreakingNotifyAtMinute")).find("option", withId(notifyMinute)).click();
+    find("select", withId("hsaBreakingNotifyAtPeriod")).find("option", withId(notifyMinute)).click();
 
     // Maui News
     find("select", withId("mnBreakingSubscribe")).find("option", withId(subscribe)).click();
     find("select", withId("mnBreakingNotifyBy")).find("option", withId(notifyBy)).click();
     find("select", withId("mnBreakingNotifyAtHour")).find("option", withId(notifyHour)).click();
-    find("select", withId("mnBreakingNotifyAtMinute")).find("option", withId(notifyMinute)).click();
+    find("select", withId("mnBreakingNotifyAtPeriod")).find("option", withId(notifyMinute)).click();
 
     // Civil Beat
     find("select", withId("cbPopularSubscribe")).find("option", withId(subscribe)).click();
     find("select", withId("cbPopularNotifyBy")).find("option", withId(notifyBy)).click();
     find("select", withId("cbPopularNotifyAtHour")).find("option", withId(notifyHour)).click();
-    find("select", withId("cbPopularNotifyAtMinute")).find("option", withId(notifyMinute)).click();
+    find("select", withId("cbPopularNotifyAtPeriod")).find("option", withId(notifyMinute)).click();
 
     //Submit the form whose id is "submit"
     submit("#submit");

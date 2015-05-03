@@ -1,4 +1,4 @@
-@(field: Field, isMultiple: Boolean, currentValue: String)
+@(field: Field, isMultiple: Boolean)
 
 <div class="form-group @if(field.hasErrors) {has-error}">
     <div>
@@ -7,30 +7,18 @@
         id="@field.id"
         name="@if(isMultiple) {@(field.name + "[]")} else {@field.name}"
         @if(isMultiple) {multiple="multiple"}>
-        <option id="0" value="0" @if(currentValue == "0") {selected}>0</option>
-        <option id="1" value="1" @if(currentValue == "1") {selected}>1</option>
-        <option id="2" value="2" @if(currentValue == "2") {selected}>2</option>
-        <option id="3" value="3" @if(currentValue == "3") {selected}>3</option>
-        <option id="4" value="4" @if(currentValue == "4") {selected}>4</option>
-        <option id="5" value="5" @if(currentValue == "5") {selected}>5</option>
-        <option id="6" value="6" @if(currentValue == "6") {selected}>6</option>
-        <option id="7" value="7" @if(currentValue == "7") {selected}>7</option>
-        <option id="8" value="8" @if(currentValue == "8") {selected}>8</option>
-        <option id="9" value="9" @if(currentValue == "9") {selected}>9</option>
-        <option id="10" value="10" @if(currentValue == "10") {selected}>10</option>
-        <option id="11" value="11" @if(currentValue == "11") {selected}>11</option>
-        <option id="12" value="12" @if(currentValue == "12") {selected}>12</option>
-        <option id="13" value="13" @if(currentValue == "13") {selected}>13</option>
-        <option id="14" value="14" @if(currentValue == "14") {selected}>14</option>
-        <option id="15" value="15" @if(currentValue == "15") {selected}>15</option>
-        <option id="16" value="16" @if(currentValue == "16") {selected}>16</option>
-        <option id="17" value="17" @if(currentValue == "17") {selected}>17</option>
-        <option id="18" value="18" @if(currentValue == "18") {selected}>18</option>
-        <option id="19" value="19" @if(currentValue == "19") {selected}>19</option>
-        <option id="20" value="20" @if(currentValue == "20") {selected}>20</option>
-        <option id="21" value="21" @if(currentValue == "21") {selected}>21</option>
-        <option id="22" value="22" @if(currentValue == "22") {selected}>22</option>
-        <option id="23" value="23" @if(currentValue == "23") {selected}>23</option>
+        <option id="1" value="1" @if(field.value.get == "1") {selected}>1</option>
+        <option id="2" value="2" @if(field.value.get == "2") {selected}>2</option>
+        <option id="3" value="3" @if(field.value.get == "3") {selected}>3</option>
+        <option id="4" value="4" @if(field.value.get == "4") {selected}>4</option>
+        <option id="5" value="5" @if(field.value.get == "5") {selected}>5</option>
+        <option id="6" value="6" @if(field.value.get == "6") {selected}>6</option>
+        <option id="7" value="7" @if(field.value.get == "7") {selected}>7</option>
+        <option id="8" value="8" @if(field.value.get == "8") {selected}>8</option>
+        <option id="9" value="9" @if(field.value.get == "9") {selected}>9</option>
+        <option id="10" value="10" @if(field.value.get == "10") {selected}>10</option>
+        <option id="11" value="11" @if(field.value.get == "11") {selected}>11</option>
+        <option id="12" value="12" @if(field.value.get == "12") {selected}>12</option>
         </select>
         <span class="help-block">@{field.error.map { error => error.message }}</span>
     </div>

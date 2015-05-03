@@ -19,7 +19,7 @@ public class NewsServices {
    * @param subscription The users subscriptions.
    */
   public static void execute(UserInfo user, NewsServicesSubscription subscription) {
-
+/*
     String content;
 
     ArrayList<String> list = subscription.getEmailSubscriptions();
@@ -35,7 +35,7 @@ public class NewsServices {
       content = getSmsContent(list);
       TextMessage.send(user.getTelephone(), user.getCarrier().getName(), content);
     }
-
+*/
   }
 
   /**

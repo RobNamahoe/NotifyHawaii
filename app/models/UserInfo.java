@@ -6,8 +6,8 @@ import views.formdata.UserFormData;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 /**
@@ -29,9 +29,9 @@ public class UserInfo extends Model {
   @ManyToOne(cascade = CascadeType.PERSIST)
   private Carrier carrier;
 
-  // Many of me (UserInfo) maps to many of the following (Subscription)
-  @ManyToMany(cascade = CascadeType.PERSIST)
-  private List<Subscription> subscriptions;
+  // One of me (UserInfo) maps to many of the following (NewsServicesSubscription)
+  @OneToMany(mappedBy = "user")
+  private List<NewsServicesSubscription> newsSubscriptions;
 
 
   /**
@@ -190,16 +190,16 @@ public class UserInfo extends Model {
    * Gets a list of the users current subscriptions.
    * @return A list of subscriptions.
    */
-  public List<Subscription> getSubscriptions() {
-    return subscriptions;
+  public List<NewsServicesSubscription> getSubscriptions() {
+    return newsSubscriptions;
   }
 
   /**
    * Sets the list of the users current subscriptions.
    * @param subscriptions A list of the current subscriptions.
    */
-  public void setSubscriptions(List<Subscription> subscriptions) {
-    this.subscriptions = subscriptions;
+  public void setSubscriptions(List<NewsServicesSubscription> subscriptions) {
+    this.newsSubscriptions = subscriptions;
   }
 
 }

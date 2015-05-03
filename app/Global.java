@@ -1,13 +1,10 @@
 import models.Carrier;
 import models.CarrierDB;
 import models.NewsArticle;
-import models.NewsServiceSubscriptionDB;
-import models.NewsServicesSubscription;
 import models.UserInfo;
 import models.UserInfoDB;
 import play.Application;
 import play.GlobalSettings;
-import views.formdata.NewsServicesFormData;
 
 import java.util.ArrayList;
 
@@ -52,9 +49,9 @@ public class Global extends GlobalSettings {
     UserInfo user = new UserInfo("Notify", "Hawaii", "8085551234", "admin@notifyhawaii.com", carrier, "password");
     UserInfoDB.addUser(user);
 
-      NewsServicesFormData formData = new NewsServicesFormData();
-      NewsServicesSubscription data = new NewsServicesSubscription(formData);
-      NewsServiceSubscriptionDB.addSubscription(1, data);
+      //NewsServicesFormData formData = new NewsServicesFormData();
+    //  NewsServicesSubscription data = new NewsServicesSubscription(formData);
+     // NewsServiceSubscriptionDB.addSubscription(1, data);
 
     }
   }
