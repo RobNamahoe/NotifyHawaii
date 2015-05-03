@@ -166,8 +166,7 @@ public class Application extends Controller {
   @Security.Authenticated(Secured.class)
   public static Result updateUserInfo() {
 
-    String userEmail = Secured.getUser(ctx());
-    NewsServices.execute(UserInfoDB.getUser(userEmail));
+    NewsServices.execute();
 
     Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
     if (userForm.hasErrors()) {

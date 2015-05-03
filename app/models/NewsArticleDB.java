@@ -1,9 +1,11 @@
 package models;
 
+import controllers.NewsServices.CivilBeat;
 import controllers.NewsServices.HonoluluStarAdvertiser;
 import controllers.NewsServices.MauiNews;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A helper class for managing News Articles.
@@ -19,23 +21,6 @@ public class NewsArticleDB {
   }
 
   /**
-   * Add the article to the database.
-   * @param url The url of the article.
-   * @param title The title of the article.
-   * @param summary A summary of the article.
-   * @param topic The topic.
-   */
-  public static synchronized void add(String url, String title, String summary, String topic) {
-    NewsArticle article = new NewsArticle(url, title, summary, topic);
-    article.save();
-  }
-
-
-  public static void add(String url, String title, String summary) {
-    NewsArticle article = new NewsArticle(url, title, summary, "");
-    article.save();
-  }
-  /**
    * Checks if an article with the supplied url already exists in the database.
    * @param url The url of the article.
    * @return True if the article exists, false otherwise.
@@ -45,97 +30,116 @@ public class NewsArticleDB {
     return (article != null);
   }
 
+
+  /**
+   * Gets a list of News Articles from the specified site and topic.
+   * @param provider The site.
+   * @param topic The topic.
+   * @return A list of news articles.
+   */
+  public static List<NewsArticle> getArticles(String provider, String topic) {
+    return NewsArticle.find().where().eq("provider", provider).where().eq("topic", topic).findList();
+  }
+
+  /**
+   * Gets a list of News Articles from the specified NewsServiceSubscription.
+   * @param subscription The NewsServiceSubscription object.
+   * @return A list of news articles.
+   */
+  public static List<NewsArticle> getArticles(NewsServicesSubscription subscription) {
+    return getArticles(subscription.getSite(), subscription.getTopic());
+  }
+
+
   /**
    * Update the database with current news articles.
    */
   public static void updateDB() {
 
     // Honolulu Star Advertiser
-    Thread tHsaPopular = new Thread(new WorkerThread("hsa_popular"));
-    tHsaPopular.start();
-
-    Thread tHsaBreaking = new Thread(new WorkerThread("hsa_breaking"));
-    tHsaBreaking.start();
-
-    Thread tHsaSports = new Thread(new WorkerThread("hsa_sports"));
-    tHsaSports.start();
+    Thread hsaThread = new Thread(new StarAdvertiserUpdaterThread());
+    hsaThread.start();
 
     // Maui News
-    Thread tMnHawaii = new Thread(new WorkerThread("mn_hawaii"));
-    tMnHawaii.start();
-
-    Thread tMnLocal = new Thread(new WorkerThread("mn_local"));
-    tMnLocal.start();
-
-    Thread tMnBreaking = new Thread(new WorkerThread("mn_breaking"));
-    tMnBreaking.start();
-
-    Thread tMnBusiness = new Thread(new WorkerThread("mn_business"));
-    tMnBusiness.start();
+    Thread mnThread = new Thread(new MauiNewsUpdaterThread());
+    mnThread.start();
 
     // Civil Beat
+    Thread cbThread = new Thread(new CivilBeatUpdaterThread());
+    cbThread.start();
 
+    try {
+      hsaThread.join();
+      mnThread.join();
+      cbThread.join();
+    }
+    catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+
+    System.out.println("Done");
 
   }
 
-  private static class WorkerThread implements Runnable {
-
-    String topic;
+  private static class StarAdvertiserUpdaterThread implements Runnable {
 
     /**
-     * Creates a new instance of the worker thread.
-     * @param topic The topic to retrieve.
-     */
-    public WorkerThread(String topic) {
-      this.topic = topic;
-    }
-
-    /**
-     * Retrieve the articles.
+     * Retrieve Honolulu Star Advertiser articles.
      */
     public void run() {
 
-      ArrayList<NewsArticle> articles = new ArrayList<>();
-
-      switch (topic) {
-        case "hsa_breaking":
-          articles = HonoluluStarAdvertiser.getBreakingArticles();
-          break;
-        case "hsa_popular":
-          articles = HonoluluStarAdvertiser.getPopularArticles();
-          break;
-        case "hsa_sports":
-          articles = HonoluluStarAdvertiser.getSportsArticles();
-          break;
-        case "mn_hawaii":
-          articles = MauiNews.getHawaiiNewsArticles();
-          break;
-        case "mn_local":
-          articles = MauiNews.getLocalNewsArticles();
-          break;
-        case "mn_breaking":
-          articles = MauiNews.getBreakingNewsArticles();
-          break;
-        case "mn_business":
-          articles = MauiNews.getBusinessNewsArticles();
-          break;
-
-
-
-
-
-        default:
-          break;
-      }
+      ArrayList<NewsArticle> articles = HonoluluStarAdvertiser.getBreakingArticles();
+      articles.addAll(HonoluluStarAdvertiser.getPopularArticles());
+      articles.addAll(HonoluluStarAdvertiser.getSportsArticles());
 
       for (NewsArticle article : articles) {
-          //System.out.println(article.getTopic() + ": " + article.getTitle());
         if (!NewsArticleDB.exists(article.getUrl())) {
           NewsArticleDB.add(article);
         }
       }
     }
-
   }
 
+  private static class MauiNewsUpdaterThread implements Runnable {
+
+    /**
+     * Retrieve Maui News articles.
+     */
+    public void run() {
+
+      ArrayList<NewsArticle> articles = MauiNews.getHawaiiNewsArticles();
+      articles.addAll(MauiNews.getLocalNewsArticles());
+      articles.addAll(MauiNews.getBreakingNewsArticles());
+      articles.addAll(MauiNews.getBusinessNewsArticles());
+
+      for (NewsArticle article : articles) {
+        if (!NewsArticleDB.exists(article.getUrl())) {
+          NewsArticleDB.add(article);
+        }
+      }
+    }
+  }
+
+  private static class CivilBeatUpdaterThread implements Runnable {
+
+    /**
+     * Retrieve Civil Beat articles.
+     */
+    public void run() {
+
+      ArrayList<NewsArticle> articles = CivilBeat.getPopularArticles();
+      articles.addAll(CivilBeat.getHonoluluArticles());
+      articles.addAll(CivilBeat.getHawaiiArticles());
+      articles.addAll(CivilBeat.getEducationArticles());
+      articles.addAll(CivilBeat.getPoliticsArticles());
+      articles.addAll(CivilBeat.getEnergyAndEnvironmentArticles());
+      articles.addAll(CivilBeat.getDevelopmentArticles());
+
+      for (NewsArticle article : articles) {
+        if (!NewsArticleDB.exists(article.getUrl())) {
+          NewsArticleDB.add(article);
+        }
+      }
+    }
+  }
 }

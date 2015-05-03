@@ -1,9 +1,11 @@
 package models;
 
+import com.avaje.ebean.annotation.CreatedTimestamp;
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 
 /**
  * Representation of a News Story.
@@ -20,8 +22,9 @@ public class NewsArticle extends Model {
   private String title = "";
   private String summary = "";
   private String articleDate = "";
-  private String postDate = "";
-  private String postTime = "";
+
+  @CreatedTimestamp
+  private Timestamp timestamp;
 
   /**
    * Construct a new instance of a News Article with the specified values.
@@ -40,28 +43,6 @@ public class NewsArticle extends Model {
     this.summary = (summary.length() > 255) ? summary.substring(0, 240) : summary;
     this.articleDate = articleDate;
   }
-
-  /**
-   * DELETE THIS CONSTRUCTOR METHOD
-   * @param url
-   * @param title
-   * @param summary
-   */
-  public NewsArticle(String url, String title, String summary) {
-    this.url = url.trim();
-    this.title = title.trim();
-    this.summary = summary.trim();
-    this.topic = "";
-  }
-
-  public NewsArticle(String url, String title, String summary, String postDate) {
-    this.url = url.trim();
-    this.title = title.trim();
-    this.summary = summary.trim();
-    this.postDate = postDate;
-  }
-
-
 
   /**
    * The EBean ORM finder method for database queries.
@@ -171,38 +152,6 @@ public class NewsArticle extends Model {
   }
 
   /**
-   * Gets the date the article was posted.
-   * @return The date the article was posted.
-   */
-  public String getPostDate() {
-    return postDate;
-  }
-
-  /**
-   * Sets the articles post date.
-   * @param postDate the post date.
-   */
-  public void setPostDate(String postDate) {
-    this.postDate = postDate;
-  }
-
-  /**
-   * Sets the article post time.
-   * @return The post time.
-   */
-  public String getPostTime() {
-    return postTime;
-  }
-
-  /**
-   * Sets the article post time.
-   * @param postTime The post time.
-   */
-  public void setPostTime(String postTime) {
-    this.postTime = postTime;
-  }
-
-  /**
    * Gets the date and time the article was posted.
    * @return The date and time the article was posted.
    */
@@ -232,5 +181,21 @@ public class NewsArticle extends Model {
    */
   public void setProvider(String provider) {
     this.provider = provider;
+  }
+
+  /**
+   * Gets the timestamp (time the article was added to the database).
+   * @return The timestamp.
+   */
+  public Timestamp getTimestamp() {
+    return timestamp;
+  }
+
+  /**
+   * Sets the timestamp (time the article was added to the database).
+   * @param timestamp The timestamp.
+   */
+  public void setTimestamp(Timestamp timestamp) {
+    this.timestamp = timestamp;
   }
 }

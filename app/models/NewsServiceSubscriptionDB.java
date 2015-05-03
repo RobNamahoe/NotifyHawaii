@@ -5,7 +5,10 @@ import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Query;
 import views.formdata.NewsServicesFormData;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A helper class to manage news services subscriptions.
@@ -32,6 +35,23 @@ public class NewsServiceSubscriptionDB {
     Query<NewsServicesSubscription> query = Ebean.createQuery(NewsServicesSubscription.class);
     query.where().eq("user", user);
     return query.findList();
+  }
+
+
+  /**
+   * Gets a list of users that currently hold a subscription.
+   * @return A list of users that currently hold a subscription.
+   */
+  public static List<UserInfo> getSubscriptionHolders() {
+    List<NewsServicesSubscription> subscriptions = NewsServicesSubscription.find().all();
+    Map<String, UserInfo> users = new HashMap<>();
+    for (NewsServicesSubscription subscription : subscriptions) {
+      UserInfo user = subscription.getUser();
+      if (!users.containsKey(user.getEmail())) {
+        users.put(user.getEmail(), user);
+      }
+    }
+    return new ArrayList<>(users.values());
   }
 
   /**

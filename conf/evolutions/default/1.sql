@@ -18,8 +18,7 @@ create table news_article (
   title                     varchar(255),
   summary                   varchar(255),
   article_date              varchar(255),
-  post_date                 varchar(255),
-  post_time                 varchar(255),
+  timestamp                 timestamp not null,
   constraint pk_news_article primary key (id))
 ;
 
