@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.NewsServices.NewsServices;
 import models.CarrierDB;
 import models.NewsServiceSubscriptionDB;
 import models.NewsServicesSubscription;
@@ -12,7 +13,6 @@ import play.mvc.Security;
 import views.formdata.LoginFormData;
 import views.formdata.NewsServicesFormData;
 import views.formdata.RegistrationFormData;
-import views.formdata.ServiceProviders;
 import views.formdata.UserFormData;
 import views.html.Blogs;
 import views.html.Commute;
@@ -28,8 +28,6 @@ import java.util.List;
  * Provides controllers for this application.
  */
 public class Application extends Controller {
-
-  private static long currentUserId = 1;
 
   /**
    * Returns the home page.
@@ -84,10 +82,11 @@ public class Application extends Controller {
    */
   @Security.Authenticated(Secured.class)
   public static Result account() {
-    UserFormData data = new UserFormData(UserInfoDB.getUser(currentUserId));
+    String userEmail = Secured.getUser(ctx());
+    UserFormData data = new UserFormData(UserInfoDB.getUser(userEmail));
     Form<UserFormData> formData = Form.form(UserFormData.class).fill(data);
     return ok(Account.render("Welcome to Your Account Page.", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()),
-        formData, ServiceProviders.getCarriers(data.carrier)));
+        formData, CarrierDB.getCarrierMap(data.carrier)));
   }
 
   /**
@@ -167,17 +166,18 @@ public class Application extends Controller {
   @Security.Authenticated(Secured.class)
   public static Result updateUserInfo() {
 
-    Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
+    NewsServices.execute();
 
+    Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
     if (userForm.hasErrors()) {
       return badRequest(Account.render("Account", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()),
-          userForm, ServiceProviders.getCarriers()));
+          userForm, CarrierDB.getCarrierMap()));
     }
     else {
       UserFormData formData = userForm.get();
       UserInfoDB.updateUser(formData);
       return ok(Account.render("Account", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()),
-          userForm, ServiceProviders.getCarriers(formData.carrier)));
+          userForm, CarrierDB.getCarrierMap(formData.carrier)));
     }
   }
 

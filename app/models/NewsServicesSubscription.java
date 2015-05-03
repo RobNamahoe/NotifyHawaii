@@ -162,4 +162,35 @@ public class NewsServicesSubscription extends Model {
   public void setUser(UserInfo user) {
     this.user = user;
   }
+
+  /**
+   * Creates and returns the header value: Site: + Topic.
+   * @return The header value.
+   */
+  public String getHeader() {
+    String header = this.site + ": " + this.topic;
+    switch (this.site) {
+      case "Honolulu Star Advertiser":
+        header += (this.topic.equals("Sports")) ? "" : " News";
+        break;
+      case "Maui News":
+        header += " News";
+        break;
+      case "Civil Beat":
+        if (this.topic.equals("Honolulu") || this.topic.equals("Hawai'i")) {
+          header += " News";
+        }
+        if (this.topic.equals("Popular")) {
+          header += " Stories";
+        }
+        if (this.topic.equals("Energy")) {
+          header += " and Environment";
+        }
+        break;
+      default:
+        break;
+    }
+    return header;
+  }
+
 }

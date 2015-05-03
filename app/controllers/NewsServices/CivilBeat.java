@@ -14,6 +14,8 @@ import java.util.ArrayList;
  */
 public class CivilBeat {
 
+  private static final String PROVIDER = "Civil Beat";
+
   /** An enumeration of article types. */
   private static enum ArticleType { POPULAR, HONOLULU, HAWAII, EDUCATION,
       POLITICS, ENERGY_AND_ENVIRONMENT, DEVELOPMENT }
@@ -72,41 +74,48 @@ public class CivilBeat {
    * @return A list of News Articles for the specified type.
    */
   private static ArrayList<NewsArticle> getArticles(ArticleType type) {
-    String url;
+    String url, topic;
     switch (type) {
       case POPULAR:
         return getPopularArticles();
       case HONOLULU:
+        topic = "Honolulu";
         url = "http://www.civilbeat.com/category/honolulu-beat/";
         break;
       case HAWAII:
+        topic = "Hawaii";
         url = "http://www.civilbeat.com/category/hawaii-beat/";
         break;
       case EDUCATION:
+        topic = "Education";
         url = "http://www.civilbeat.com/category/education-beat/";
         break;
       case POLITICS:
+        topic = "Politics";
         url = "http://www.civilbeat.com/category/election-2014-beat/";
         break;
       case ENERGY_AND_ENVIRONMENT:
+        topic = "Energy";
         url = "http://www.civilbeat.com/category/energy-environment-beat/";
         break;
       case DEVELOPMENT:
+        topic = "Development";
         url = "http://www.civilbeat.com/category/development-beat/";
         break;
       default:
         return getPopularArticles();
     }
-    return getArticles(url);
+    return getArticles(url, topic);
   }
 
 
   /**
    * Get a list of Civil Beats Honolulu Articles.
    * @param pageUrl The url of the page to scrape.
+   * @param topic The topic of the article.
    * @return A list of Civil Beats Honolulu articles.
    */
-  private static ArrayList<NewsArticle> getArticles(String pageUrl) {
+  private static ArrayList<NewsArticle> getArticles(String pageUrl, String topic) {
 
     ArrayList<NewsArticle> articles = new ArrayList<>();
 
@@ -127,6 +136,7 @@ public class CivilBeat {
         String url = "";
         String title = "";
         String summary = "";
+        String postDate = "";
 
         Element divMetaH2 = story.findEach("<div class=\"meta\">").findEach("<h2>");
         Element link = null;
@@ -140,6 +150,10 @@ public class CivilBeat {
           notFound.printStackTrace();
         }
 
+
+        Element divTime = story.findEach("<time>");
+        postDate = divTime.innerText();
+
         Element divBody = story.findEach("<div class=\"body\">");
         Element divBodyP = null;
 
@@ -151,8 +165,7 @@ public class CivilBeat {
           notFound.printStackTrace();
         }
 
-        articles.add(new NewsArticle(url, title, summary));
-
+        articles.add(new NewsArticle(topic, PROVIDER, url, title, summary, postDate));
       }
     }
 
@@ -184,7 +197,8 @@ public class CivilBeat {
         String url = link.getAttx("href");
         String title = link.getAttx("title");
         String summary = "";
-        articles.add(new NewsArticle(url, title, summary));
+        String postDate = "";
+        articles.add(new NewsArticle("Popular", PROVIDER, url, title, summary, postDate));
       }
       catch (NotFound notFound) {
         System.err.println("Error in CivilBeat.java line 36");

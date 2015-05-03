@@ -38,7 +38,7 @@ public class CarrierDB {
   public static Carrier getCarrier(long id) {
     Carrier carrier = Carrier.find().byId(id);
     if (carrier == null) {
-      throw new RuntimeException("A carrier with that id does not exist in the database.");
+      //throw new RuntimeException("A carrier with that id does not exist in the database.");
     }
     return carrier;
   }
@@ -52,7 +52,7 @@ public class CarrierDB {
   public static Carrier getCarrier(String name) {
     Carrier carrier = Carrier.find().where().eq("name", name).findUnique();
     if (carrier == null) {
-      throw new RuntimeException("A carrier with that name does not exist in the database.");
+      //throw new RuntimeException("A carrier with that name does not exist in the database.");
     }
     return carrier;
   }

@@ -3,10 +3,13 @@ package controllers.NewsServices;
 import controllers.Communication.Email;
 import controllers.Communication.TextMessage;
 import models.NewsArticle;
+import models.NewsArticleDB;
+import models.NewsServiceSubscriptionDB;
 import models.NewsServicesSubscription;
 import models.UserInfo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A class the executes the News Services services.
@@ -15,28 +18,48 @@ public class NewsServices {
 
   /**
    * Executes the subscribed services.
-   * @param user The current user.
-   * @param subscription The users subscriptions.
    */
-  public static void execute(UserInfo user, NewsServicesSubscription subscription) {
-/*
+  public static void execute() {
+
     String content;
+    List<UserInfo> subscribers = NewsServiceSubscriptionDB.getSubscriptionHolders();
 
-    ArrayList<String> list = subscription.getEmailSubscriptions();
+    //NewsArticleDB.updateDB();
 
-    if (list.size() > 0) {
-      content = getHtmlContent(list);
-      Email.send(user.getEmail(), "News Services", content);
+    for (UserInfo subscriber : subscribers) {
+      content = getHtmlContent(subscriber);
+      Email.send(subscriber.getEmail(), "News Services", content);
     }
-
-    list = subscription.getTextSubscriptions();
-
-    if (list.size() > 0) {
-      content = getSmsContent(list);
-      TextMessage.send(user.getTelephone(), user.getCarrier().getName(), content);
-    }
-*/
   }
+
+
+  /**
+   * Gets the list of articles as an HTML document.
+   * @param user The user.
+   * @return The message content as an HTML document.
+   */
+  private static String getHtmlContent(UserInfo user) {
+
+    String content = "<h3>Aloha " + user.getFirstName() + ",<br><br>Here are the news articles you've requested:</h3>";
+
+    List<NewsServicesSubscription> subscriptions = NewsServiceSubscriptionDB.getSubscriptions(user.getEmail());
+    for (NewsServicesSubscription subscription : subscriptions) {
+      String header = subscription.getHeader();
+      List<NewsArticle> articles = NewsArticleDB.getArticles(subscription);
+
+      if (articles.size() > 0) {
+        content += "<h3>" + header + "</h3><ul>";
+        for (NewsArticle article : articles) {
+          content += "<li>" + article.getHtml() + "</li>";
+        }
+        content += "</ul>";
+      }
+    }
+
+    return "<html>" + content + "</html>";
+
+  }
+
 
   /**
    * Gets the list of articles as an HTML document.

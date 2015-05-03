@@ -14,6 +14,9 @@ import java.util.List;
  */
 public class MauiNews {
 
+
+  private static final String PROVIDER = "Maui News";
+
   /** An enumeration of article types. */
   private static enum ArticleType { HAWAII_NEWS, LOCAL_NEWS, BREAKING_NEWS, BUSINESS_NEWS }
 
@@ -55,25 +58,30 @@ public class MauiNews {
    * @return A list of News Articles for the specified type.
    */
   private static ArrayList<NewsArticle> getArticles(ArticleType type) {
-    String url;
+    String url, topic;
     switch (type) {
       case HAWAII_NEWS:
+        topic = "Hawaii";
         url = "http://www.mauinews.com/page/category.detail/nav/5031/Hawaii-News.html";
         break;
       case LOCAL_NEWS:
+        topic = "Local";
         url = "http://www.mauinews.com/page/category.detail/nav/10/Local-News.html";
         break;
       case BREAKING_NEWS:
+        topic = "Breaking";
         url = "http://www.mauinews.com/page/category.detail/nav/5161/Breaking-News.html";
         break;
       case BUSINESS_NEWS:
+        topic = "Business";
         url = "http://www.mauinews.com/page/category.detail/nav/8/Business.html";
         break;
       default:
+        topic = "";
         url = "";
         break;
     }
-    return getArticles(url);
+    return getArticles(url, topic);
   }
 
   /**
@@ -81,7 +89,7 @@ public class MauiNews {
    * @param pageUrl The of the page with stories to scrape.
    * @return A list NewsArticle objects.
    */
-  private static ArrayList<NewsArticle> getArticles(String pageUrl) {
+  private static ArrayList<NewsArticle> getArticles(String pageUrl, String topic) {
 
     UserAgent userAgent = new UserAgent();
     try {
@@ -103,6 +111,7 @@ public class MauiNews {
         String url = "";
         String title = "";
         String summary = "";
+        String postDate = "";
 
         try {
           p = story.findFirst("<p>");
@@ -117,10 +126,18 @@ public class MauiNews {
         }
 
         if (!html.equals("")) {
-          int iStart = html.indexOf("</em>") + 5;
-          int iEnd = html.indexOf("<a href=");
+
+          // Extract post date
+          int iStart = html.indexOf("<em class=\"dim\">") + 16;
+          int iEnd = html.indexOf("</em>", iStart);
+          postDate = html.substring(iStart, iEnd).trim();
+
+          // Extract summary
+          iStart = html.indexOf("</em>") + 5;
+          iEnd = html.indexOf("<a href=");
           summary = html.substring(iStart, iEnd).trim();
-          articles.add(new NewsArticle(url, title, summary));
+
+          articles.add(new NewsArticle(topic, PROVIDER, url, title, summary, postDate));
         }
       }
     }
