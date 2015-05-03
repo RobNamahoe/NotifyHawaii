@@ -22,6 +22,8 @@ import views.html.Login;
 import views.html.News;
 import views.html.Services;
 
+import java.util.List;
+
 /**
  * Provides controllers for this application.
  */
@@ -115,20 +117,27 @@ public class Application extends Controller {
     return ok(Commute.render("Commute Services", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
   }
 
+
+
+
+
+
+
   /**
    * Returns the News services page.
    * @return The News services page.
    */
   @Security.Authenticated(Secured.class)
   public static Result news() {
-    NewsServicesFormData data = (currentUserId == 0) ? new NewsServicesFormData()
-        : new NewsServicesFormData(NewsServiceSubscriptionDB.getSubscription(currentUserId));
+
+    // Get a list of current news subscriptions for the current user
+    String userEmail = Secured.getUser(ctx());
+    List<NewsServicesSubscription> subscriptions = NewsServiceSubscriptionDB.getSubscriptions(userEmail);
+
+    NewsServicesFormData data = new NewsServicesFormData(subscriptions);
     Form<NewsServicesFormData> formData = Form.form(NewsServicesFormData.class).fill(data);
 
-    //NewsServices.execute(UserDB.getUser(currentUserId), NewsServiceSubscriptionDB.getSubscription(currentUserId));
-
-    return ok(News.render("News Services", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), formData,
-        NewsServiceSubscriptionDB.getSubscription(currentUserId)));
+    return ok(News.render("News Services", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), formData));
   }
 
   /**
@@ -139,9 +148,17 @@ public class Application extends Controller {
   public static Result updateNewsSubscriptions() {
     Form<NewsServicesFormData> formData = Form.form(NewsServicesFormData.class).bindFromRequest();
     NewsServicesFormData data = formData.get();
-    NewsServiceSubscriptionDB.addSubscription(currentUserId, new NewsServicesSubscription(data));
+    String userEmail = Secured.getUser(ctx());
+    NewsServiceSubscriptionDB.updateUserSubscription(userEmail, data);
     return redirect(routes.Application.news());
   }
+
+
+
+
+
+
+
 
   /**
    * Updates the current users contact information.

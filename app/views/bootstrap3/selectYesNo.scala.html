@@ -1,4 +1,4 @@
-@(field: Field, isMultiple: Boolean, currentValue: String)
+@(field: Field, isMultiple: Boolean)
 
 <div class="form-group @if(field.hasErrors) {has-error}">
     <div>
@@ -7,8 +7,8 @@
         id="@field.id"
         name="@if(isMultiple) {@(field.name + "[]")} else {@field.name}"
         @if(isMultiple) {multiple="multiple"}>
-        <option id="No" value="No" @if(currentValue == "No") {selected}>No</option>
-        <option id="Yes" value="Yes" @if(currentValue == "Yes") {selected}>Yes</option>
+        <option id="No" value="No" @if(field.value.get == "No") {selected}>No</option>
+        <option id="Yes" value="Yes" @if(field.value.get == "Yes") {selected}>Yes</option>
         </select>
         <span class="help-block">@{field.error.map { error => error.message }}</span>
     </div>

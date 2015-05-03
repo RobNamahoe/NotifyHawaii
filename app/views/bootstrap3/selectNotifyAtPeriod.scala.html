@@ -7,8 +7,8 @@
         id="@field.id"
         name="@if(isMultiple) {@(field.name + "[]")} else {@field.name}"
         @if(isMultiple) {multiple="multiple"}>
-        <option id="Email" value="Email" @if(field.value.get == "Email") {selected}>Email</option>
-        <option id="Text" value="Text" @if(field.value.get == "Text") {selected}>Text</option>
+        <option id="AM" value="AM" @if(field.value.get == "AM") {selected}>AM</option>
+        <option id="PM" value="PM" @if(field.value.get == "PM") {selected}>PM</option>
         </select>
         <span class="help-block">@{field.error.map { error => error.message }}</span>
     </div>
