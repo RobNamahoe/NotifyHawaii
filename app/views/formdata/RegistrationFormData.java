@@ -60,10 +60,6 @@ public class RegistrationFormData {
       errors.add(new ValidationError("regEmail", "An account with that email already exists."));
     }
 
-    if (regPhone == null || regPhone.equals("")) {
-      errors.add(new ValidationError("regEmail", "An email address is required."));
-    }
-
     if (regPassword == null || regPassword.equals("")) {
       errors.add(new ValidationError("regPassword", "A password is required."));
     }

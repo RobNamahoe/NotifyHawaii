@@ -14,6 +14,10 @@ import java.util.List;
  */
 public class HonoluluStarAdvertiser {
 
+  private static final String PROVIDER = "Honolulu Star Advertiser";
+  private static final String BREAKING = "Breaking";
+  private static final String POPULAR = "Popular";
+  private static final String SPORTS = "Sports";
 
   /**
    * Gets a list of Honolulu Star Advertiser Breaking SPORTS News Articles.
@@ -32,10 +36,13 @@ public class HonoluluStarAdvertiser {
       System.err.println("Error in HonoluluStarAdvertiser.java visiting breaking Sports HSA articles");
     }
 
-    Elements stories = userAgent.doc.findEach("<div id=\"redesign-digest-container\">").findEvery("<a>");
+    Elements stories = userAgent.doc.findEach("<a>");
 
     for (Element story : stories) {
-      articles.add(getStarAdvertiserBreakingNewsArticles(story));
+      if (story.outerHTML().contains("www.staradvertiser.com/sports/breaking") &&
+          story.outerHTML().contains("redesign-lede-container") ) {
+        articles.add(getStarAdvertiserBreakingNewsArticles(story, SPORTS));
+      }
     }
 
     return articles;
@@ -88,7 +95,8 @@ public class HonoluluStarAdvertiser {
       }
     }
 
-    return new NewsArticle(url, title, "");
+    return new NewsArticle(POPULAR, PROVIDER, url, title, "", "");
+
   }
 
 
@@ -110,10 +118,13 @@ public class HonoluluStarAdvertiser {
       System.err.println("Error in HonoluluStarAdvertiser.java visiting breaking HSA articles");
     }
 
-    Elements stories = userAgent.doc.findEach("<div id=\"redesign-digest-container\">").findEvery("<a>");
+    Elements stories = userAgent.doc.findEach("<a>");
 
     for (Element story : stories) {
-      articles.add(getStarAdvertiserBreakingNewsArticles(story));
+      if (story.outerHTML().contains("www.staradvertiser.com/news/breaking") &&
+          story.outerHTML().contains("redesign-lede-container") ) {
+        articles.add(getStarAdvertiserBreakingNewsArticles(story, BREAKING));
+      }
     }
 
     return articles;
@@ -123,27 +134,33 @@ public class HonoluluStarAdvertiser {
   /**
    * Extracts the details of the news story and returns a NewsArticle object.
    * @param story The news story.
+   * @param topic The article topic.
    * @return A NewsArticle object.
    */
-  private static NewsArticle getStarAdvertiserBreakingNewsArticles(Element story) {
+  private static NewsArticle getStarAdvertiserBreakingNewsArticles(Element story, String topic) {
 
+    // Extract URL
     String url = cleanUrl(story.getAttx("href"));
     String text = story.innerHTML().trim();
 
+    // Extract title
     int iStart = text.indexOf("<h2>") + 4;
     int iEnd = text.indexOf("</h2>");
-
     String title = text.substring(iStart, iEnd);
 
-    // remove last </div> tag
-    text = text.substring(0, text.length() - 6);
+    // Extract post date
+    iStart = text.indexOf("redesign-SA-timestamp");
+    iStart = text.indexOf(">", iStart) + 1;
+    iEnd = text.indexOf("</span>", iStart);
+    String postDate = text.substring(iStart, iEnd).trim();
 
-    iStart = text.lastIndexOf("</div>") + 6;
-    iEnd = text.length();
 
+    // Extract summary
+    iStart = text.indexOf("</div>", iEnd) + 6;
+    iEnd = text.indexOf("<!--ICONS-->", iStart);
     String summary = text.substring(iStart, iEnd).trim();
 
-    return new NewsArticle(url, title, summary);
+    return new NewsArticle(topic, PROVIDER, url, title, summary, postDate);
 
   }
 
@@ -159,6 +176,5 @@ public class HonoluluStarAdvertiser {
     }
     return url;
   }
-
 
 }

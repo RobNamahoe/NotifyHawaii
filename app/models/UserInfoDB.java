@@ -74,12 +74,17 @@ public class UserInfoDB {
     user.setLastName(data.lastName);
     user.setEmail(data.email);
     user.setTelephone(data.telephone);
+
     Carrier carrier = Carrier.find().where().eq("name", data.carrier).findUnique();
     user.setCarrier(carrier);
 
     // Make relationships bi-directional
-    carrier.addUser(user);
+    if (!data.carrier.equals("")) {
+      carrier.addUser(user);
+    }
+
     user.save();
+
   }
 
   /**

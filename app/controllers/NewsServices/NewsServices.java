@@ -3,10 +3,12 @@ package controllers.NewsServices;
 import controllers.Communication.Email;
 import controllers.Communication.TextMessage;
 import models.NewsArticle;
+import models.NewsArticleDB;
 import models.NewsServicesSubscription;
 import models.UserInfo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A class the executes the News Services services.
@@ -16,9 +18,19 @@ public class NewsServices {
   /**
    * Executes the subscribed services.
    * @param user The current user.
-   * @param subscription The users subscriptions.
    */
-  public static void execute(UserInfo user, NewsServicesSubscription subscription) {
+  public static void execute(UserInfo user) {
+
+    List<NewsServicesSubscription> subscriptions = user.getSubscriptions();
+
+    for (NewsServicesSubscription subscription : subscriptions) {
+      //System.out.println(subscription.getSite());
+    }
+
+    NewsArticleDB.updateDB();
+
+
+
 /*
     String content;
 

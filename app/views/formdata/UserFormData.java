@@ -68,7 +68,7 @@ public class UserFormData {
     this.lastName = user.getLastName();
     this.email = user.getEmail();
     this.telephone = user.getTelephone();
-    this.carrier = user.getCarrier().getName();
+    this.carrier = (user.getCarrier() == null) ? "" : user.getCarrier().getName();
     this.password = user.getPassword();
   }
 
