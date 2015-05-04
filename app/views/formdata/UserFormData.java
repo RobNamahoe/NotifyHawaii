@@ -94,6 +94,9 @@ public class UserFormData {
         errors.add(new ValidationError("carrier", "Service provider cannot be left blank."));
       }
     }
+    else {
+      carrier = "";
+    }
 
     return errors.isEmpty() ? null : errors;
   }
