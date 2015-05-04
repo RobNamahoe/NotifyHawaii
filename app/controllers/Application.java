@@ -120,12 +120,6 @@ public class Application extends Controller {
     return ok(Commute.render("Commute Services", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
   }
 
-
-
-
-
-
-
   /**
    * Returns the News services page.
    * @return The News services page.
@@ -161,6 +155,7 @@ public class Application extends Controller {
    * @param id The id of the subscription to delete.
    * @return Redirect to the account page.
    */
+  @Security.Authenticated(Secured.class)
   public static Result deleteNewsSubscription(long id) {
     NewsServiceSubscriptionDB.deleteSubscription(id);
     return redirect(routes.Application.account());
@@ -173,7 +168,7 @@ public class Application extends Controller {
   @Security.Authenticated(Secured.class)
   public static Result updateUserInfo() {
 
-    NewsServices.execute();
+    //NewsServices.execute();
 
     // Get a list of current news subscriptions for the current user
     String userEmail = Secured.getUser(ctx());

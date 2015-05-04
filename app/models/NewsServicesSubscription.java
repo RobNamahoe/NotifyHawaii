@@ -201,4 +201,12 @@ public class NewsServicesSubscription extends Model {
     return this.getHour() + " " + this.period;
   }
 
+  /**
+   * Gets a unique string for delete modal.
+   * @return A uniqe string for delete modal.
+   */
+  public String getConfirmDeleteId() {
+    return "confirmDelete" + getId();
+  }
+
 }
