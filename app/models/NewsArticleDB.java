@@ -81,6 +81,9 @@ public class NewsArticleDB {
 
   }
 
+  /**
+   * A private nested class to update the database with Star Advertiser articles.
+   */
   private static class StarAdvertiserUpdaterThread implements Runnable {
 
     /**
@@ -100,6 +103,9 @@ public class NewsArticleDB {
     }
   }
 
+  /**
+   * A private nested class to update the database with Maui News articles.
+   */
   private static class MauiNewsUpdaterThread implements Runnable {
 
     /**
@@ -120,6 +126,9 @@ public class NewsArticleDB {
     }
   }
 
+  /**
+   * A private nested class to update the database with Civil Beat articles.
+   */
   private static class CivilBeatUpdaterThread implements Runnable {
 
     /**

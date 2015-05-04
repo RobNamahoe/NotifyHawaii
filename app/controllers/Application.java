@@ -83,10 +83,14 @@ public class Application extends Controller {
   @Security.Authenticated(Secured.class)
   public static Result account() {
     String userEmail = Secured.getUser(ctx());
+
+    // Get a list of current news subscriptions for the current user
+    List<NewsServicesSubscription> newsSubscriptions = NewsServiceSubscriptionDB.getSubscriptions(userEmail);
+
     UserFormData data = new UserFormData(UserInfoDB.getUser(userEmail));
     Form<UserFormData> formData = Form.form(UserFormData.class).fill(data);
     return ok(Account.render("Welcome to Your Account Page.", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()),
-        formData, CarrierDB.getCarrierMap(data.carrier)));
+        formData, CarrierDB.getCarrierMap(data.carrier), newsSubscriptions));
   }
 
   /**
@@ -152,12 +156,15 @@ public class Application extends Controller {
     return redirect(routes.Application.news());
   }
 
-
-
-
-
-
-
+  /**
+   * Deletes the news subscription with the specified id.
+   * @param id The id of the subscription to delete.
+   * @return Redirect to the account page.
+   */
+  public static Result deleteNewsSubscription(long id) {
+    NewsServiceSubscriptionDB.deleteSubscription(id);
+    return redirect(routes.Application.account());
+  }
 
   /**
    * Updates the current users contact information.
@@ -168,16 +175,20 @@ public class Application extends Controller {
 
     NewsServices.execute();
 
+    // Get a list of current news subscriptions for the current user
+    String userEmail = Secured.getUser(ctx());
+    List<NewsServicesSubscription> newsSubscriptions = NewsServiceSubscriptionDB.getSubscriptions(userEmail);
+
     Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
     if (userForm.hasErrors()) {
       return badRequest(Account.render("Account", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()),
-          userForm, CarrierDB.getCarrierMap()));
+          userForm, CarrierDB.getCarrierMap(), newsSubscriptions));
     }
     else {
       UserFormData formData = userForm.get();
       UserInfoDB.updateUser(formData);
       return ok(Account.render("Account", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()),
-          userForm, CarrierDB.getCarrierMap(formData.carrier)));
+          userForm, CarrierDB.getCarrierMap(formData.carrier), newsSubscriptions));
     }
   }
 
