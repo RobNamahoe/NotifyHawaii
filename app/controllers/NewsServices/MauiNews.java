@@ -87,6 +87,7 @@ public class MauiNews {
   /**
    * Extracts the details of news stories and returns a NewsArticle object.
    * @param pageUrl The of the page with stories to scrape.
+   * @param topic The topic of the articles to retrieve.
    * @return A list NewsArticle objects.
    */
   private static ArrayList<NewsArticle> getArticles(String pageUrl, String topic) {

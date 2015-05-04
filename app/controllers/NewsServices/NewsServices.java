@@ -1,7 +1,6 @@
 package controllers.NewsServices;
 
 import controllers.Communication.Email;
-import controllers.Communication.TextMessage;
 import models.NewsArticle;
 import models.NewsArticleDB;
 import models.NewsServiceSubscriptionDB;
@@ -24,7 +23,7 @@ public class NewsServices {
     String content;
     List<UserInfo> subscribers = NewsServiceSubscriptionDB.getSubscriptionHolders();
 
-    //NewsArticleDB.updateDB();
+    NewsArticleDB.updateDB();
 
     for (UserInfo subscriber : subscribers) {
       content = getHtmlContent(subscriber);

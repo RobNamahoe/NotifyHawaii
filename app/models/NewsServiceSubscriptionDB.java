@@ -37,7 +37,6 @@ public class NewsServiceSubscriptionDB {
     return query.findList();
   }
 
-
   /**
    * Gets a list of users that currently hold a subscription.
    * @return A list of users that currently hold a subscription.
@@ -53,6 +52,15 @@ public class NewsServiceSubscriptionDB {
     }
     return new ArrayList<>(users.values());
   }
+
+  /**
+   * Deletes the subscription with the specified id.
+   * @param id The id of the subscription to delete.
+   */
+  public static void deleteSubscription(long id) {
+    NewsServicesSubscription.find().byId(id).delete();
+  }
+
 
   /**
    * Update the Subscription table with the current users new News subscriptions.

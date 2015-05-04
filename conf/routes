@@ -3,24 +3,25 @@
 # ~~~~
 
 # Home page
-GET         /                    controllers.Application.index()
-GET         /account             controllers.Application.account()
-GET         /services            controllers.Application.services()
-GET         /blogs               controllers.Application.blogs()
-GET         /commute             controllers.Application.commute()
-GET         /news                controllers.Application.news()
+GET         /                       controllers.Application.index()
+GET         /account                controllers.Application.account()
+GET         /services               controllers.Application.services()
+GET         /blogs                  controllers.Application.blogs()
+GET         /commute                controllers.Application.commute()
+GET         /news                   controllers.Application.news()
 
-GET         /login               controllers.Application.login()
-POST        /login               controllers.Application.postLogin()
+GET         /login                  controllers.Application.login()
+POST        /login                  controllers.Application.postLogin()
 
-GET         /registration        controllers.Application.registration()
-POST        /registration        controllers.Application.postRegistration()
+GET         /registration           controllers.Application.registration()
+POST        /registration           controllers.Application.postRegistration()
 
-GET         /logout              controllers.Application.logout()
+GET         /logout                 controllers.Application.logout()
 
-POST        /news                controllers.Application.updateNewsSubscriptions()
-POST        /account             controllers.Application.updateUserInfo()
+POST        /news                   controllers.Application.updateNewsSubscriptions()
+POST        /account                controllers.Application.updateUserInfo()
 
+GET         /deletenewssubscription controllers.Application.deleteNewsSubscription(id: Long?= 0)
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file        controllers.Assets.at(path="/public", file)
+GET         /assets/*file           controllers.Assets.at(path="/public", file)

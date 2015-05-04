@@ -1,4 +1,4 @@
-@(message: String, isLoggedIn: Boolean, userInfo: UserInfo, userForm: Form[views.formdata.UserFormData], carrierMap: Map[String, Boolean])
+@(message: String, isLoggedIn: Boolean, userInfo: UserInfo, userForm: Form[views.formdata.UserFormData], carrierMap: Map[String, Boolean], newsSubscriptions: List[NewsServicesSubscription])
 
 @import helper._
 @import views.html.bootstrap3._
@@ -74,63 +74,29 @@
                         <th>Notify By</th>
                         <th>Options</th>
                     </tr>
-                    <tr>
-                        <td>Honolulu Star Advertiser Breaking News</td>
-                        <td>Each Morning</td>
-                        <td>Email</td>
+
+                    @for(subscription <- newsSubscriptions) {
+                      <tr>
+                        <td>@subscription.getHeader()</td>
+                        <td>@subscription.getNotificationTime()</td>
+                        <td>@subscription.getMethod()</td>
                         <td>
-                            <a class="btn btn-primary btn-xs" data-toggle="modal" href="#">
-                                <div class="glyphicon glyphicon-pencil"></div> Edit
-                            </a>&nbsp;&nbsp;
-                            <a class="btn btn-danger btn-xs" data-toggle="modal" href="#">
-                                <div class="glyphicon glyphicon-remove"></div> Remove
-                            </a>
+
+                          <a class="btn btn-primary btn-xs"
+                             data-toggle="modal"
+                             href="@routes.Application.news()">
+                            <div class="glyphicon glyphicon-pencil"></div> Edit
+                          </a>&nbsp;&nbsp;
+                          <a class="btn btn-danger btn-xs"
+                            data-toggle="modal"
+                            href="@routes.Application.deleteNewsSubscription(subscription.getId())">
+                          <div class="glyphicon glyphicon-remove"></div> Remove
+                          </a>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>Google Maps</td>
-                        <td>Commute is greater than 45 minutes</td>
-                        <td>Text Message</td>
-                        <td>
-                            <a class="btn btn-primary btn-xs" data-toggle="modal" href="#">
-                                <div class="glyphicon glyphicon-pencil"></div> Edit
-                            </a>&nbsp;&nbsp;
-                            <a class="btn btn-danger btn-xs" data-toggle="modal" href="#">
-                                <div class="glyphicon glyphicon-remove"></div> Remove
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>The BUS Express A</td>
-                        <td>Running early or late</td>
-                        <td>Text Message</td>
-                        <td>
-                            <a class="btn btn-primary btn-xs" data-toggle="modal" href="#">
-                                <div class="glyphicon glyphicon-pencil"></div> Edit
-                            </a>&nbsp;&nbsp;
-                            <a class="btn btn-danger btn-xs" data-toggle="modal" href="#">
-                                <div class="glyphicon glyphicon-remove"></div> Remove
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Word Press: Rob C. Namahoe</td>
-                        <td>New Blog Post</td>
-                        <td>Email</td>
-                        <td>
-                            <a class="btn btn-primary btn-xs" data-toggle="modal" href="#">
-                                <div class="glyphicon glyphicon-pencil"></div> Edit
-                            </a>&nbsp;&nbsp;
-                            <a class="btn btn-danger btn-xs" data-toggle="modal" href="#">
-                                <div class="glyphicon glyphicon-remove"></div> Remove
-                            </a>
-                        </td>
-                    </tr>
+                      </tr>
+                    }
                 </table>
             </div>
         </div>
-
-
-
     </div>
 }

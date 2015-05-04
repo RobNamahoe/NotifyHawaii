@@ -39,8 +39,8 @@ public class HonoluluStarAdvertiser {
     Elements stories = userAgent.doc.findEach("<a>");
 
     for (Element story : stories) {
-      if (story.outerHTML().contains("www.staradvertiser.com/sports/breaking") &&
-          story.outerHTML().contains("redesign-lede-container") ) {
+      if (story.outerHTML().contains("www.staradvertiser.com/sports/breaking")
+          && story.outerHTML().contains("redesign-lede-container")) {
         articles.add(getStarAdvertiserBreakingNewsArticles(story, SPORTS));
       }
     }
@@ -121,8 +121,8 @@ public class HonoluluStarAdvertiser {
     Elements stories = userAgent.doc.findEach("<a>");
 
     for (Element story : stories) {
-      if (story.outerHTML().contains("www.staradvertiser.com/news/breaking") &&
-          story.outerHTML().contains("redesign-lede-container") ) {
+      if (story.outerHTML().contains("www.staradvertiser.com/news/breaking")
+          && story.outerHTML().contains("redesign-lede-container")) {
         articles.add(getStarAdvertiserBreakingNewsArticles(story, BREAKING));
       }
     }

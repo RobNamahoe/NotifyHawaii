@@ -193,4 +193,12 @@ public class NewsServicesSubscription extends Model {
     return header;
   }
 
+  /**
+   * Gets the notification time for the curernt subscription.
+   * @return The notification time.
+   */
+  public String getNotificationTime() {
+    return this.getHour() + " " + this.period;
+  }
+
 }
