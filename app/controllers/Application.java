@@ -20,6 +20,7 @@ import views.html.Index;
 import views.html.Account;
 import views.html.Login;
 import views.html.News;
+import views.html.NewsArticles;
 import views.html.Services;
 
 import java.util.List;
@@ -61,7 +62,7 @@ public class Application extends Controller {
     }
     Form<LoginFormData> loginFormData = Form.form(LoginFormData.class);
     Form<RegistrationFormData> regFormData = Form.form(RegistrationFormData.class);
-    return ok(Login.render("Login", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), "registration",
+    return ok(Login.render("Register", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), "registration",
         CarrierDB.getCarrierMap(), loginFormData, regFormData));
   }
 
@@ -168,8 +169,6 @@ public class Application extends Controller {
   @Security.Authenticated(Secured.class)
   public static Result updateUserInfo() {
 
-    //NewsServices.execute();
-
     // Get a list of current news subscriptions for the current user
     String userEmail = Secured.getUser(ctx());
     List<NewsServicesSubscription> newsSubscriptions = NewsServiceSubscriptionDB.getSubscriptions(userEmail);
@@ -243,9 +242,29 @@ public class Application extends Controller {
       return redirect(routes.Application.services());
     }
 
-
   }
 
+  /**
+   * Constructs a page of news articles (subscribed to by text) specific to the user.
+   * @param id The id of the user.
+   * @return The ViewMyArticles page.
+   */
+  public static Result viewMyArticles(long id) {
+    String html = "<p><h2>Oops! There's nothing for you to see here.</h2></p>";
+    if (id > 0) {
+      UserInfo user = UserInfoDB.getUser(id);
+      html =  NewsServices.getTextHtml(user);
+    }
+    return ok(NewsArticles.render("News Articles", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), html));
+  }
 
+  /**
+   * Demo the sending of news articles.
+   * @return Redirect to the account page.
+   */
+  public static Result demoSendNewsArticles() {
+    NewsServices.execute();
+    return redirect(routes.Application.account());
+  }
 
 }

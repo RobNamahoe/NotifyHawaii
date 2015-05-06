@@ -33,7 +33,6 @@ public class UserInfo extends Model {
   @OneToMany(mappedBy = "user")
   private List<NewsServicesSubscription> newsSubscriptions;
 
-
   /**
    * Creates a new user instance.
    * @param firstName The users first name.
@@ -200,6 +199,19 @@ public class UserInfo extends Model {
    */
   public void setSubscriptions(List<NewsServicesSubscription> subscriptions) {
     this.newsSubscriptions = subscriptions;
+  }
+
+  /**
+   * Checks to see if the current user has requested to received News articles by text.
+   * @return True if yes, false otherwise.
+   */
+  public Boolean notifyNewsByText() {
+    for (NewsServicesSubscription subscription : this.newsSubscriptions) {
+      if (subscription.getMethod().equals("Text")) {
+        return true;
+      }
+    }
+    return false;
   }
 
 }

@@ -138,7 +138,7 @@ public class NewsArticle extends Model {
    * @return The HTML representation of the article.
    */
   public String getHtml() {
-    String content = "<a href=\"" + this.url + "\">" + this.title + "</a>"; //<br>" + this.summary;
+    String content = "<strong><a href=\"" + this.url + "\">" + this.title + "</a></strong>"; //<br>" + this.summary;
     content += (this.summary.length() > 0) ? "<br>" + this.summary : "";
     return content;
   }
