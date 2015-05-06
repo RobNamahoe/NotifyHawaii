@@ -1,0 +1,7 @@
+@(message: String, isLoggedIn: Boolean, userInfo: UserInfo)(content: String)
+
+@Main(message, isLoggedIn, userInfo) {
+  <div class="container">
+    @Html(content)
+  </div>
+}

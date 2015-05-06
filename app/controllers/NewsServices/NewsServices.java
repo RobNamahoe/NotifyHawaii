@@ -1,6 +1,7 @@
 package controllers.NewsServices;
 
 import controllers.Communication.Email;
+import controllers.Communication.TextMessage;
 import models.NewsArticle;
 import models.NewsArticleDB;
 import models.NewsServiceSubscriptionDB;
@@ -26,37 +27,77 @@ public class NewsServices {
     NewsArticleDB.updateDB();
 
     for (UserInfo subscriber : subscribers) {
-      content = getHtmlContent(subscriber);
+      // Send Email
+      content = getEmailHtml(subscriber);
       Email.send(subscriber.getEmail(), "News Services", content);
+
+      // Send Text
+      if (subscriber.notifyNewsByText()) {
+        content = "Aloha! Here's your news articles: http://www.notifyhawaii.com/viewmyarticles?id="
+                  + subscriber.getId();
+        TextMessage.send(subscriber.getTelephone(), subscriber.getCarrier(), content);
+      }
     }
   }
 
+  /**
+   * Gets the HTML content of the View file for the specified user.
+   * @param user The user.
+   * @return The HTML content.
+   */
+  public static String getTextHtml(UserInfo user) {
+
+    String content = "<h2>Aloha " + user.getFirstName() + ",<br><br>Here are the news articles you've requested:</h2>";
+
+    List<NewsServicesSubscription> subscriptions = NewsServiceSubscriptionDB.getSubscriptions(user.getEmail());
+    for (NewsServicesSubscription subscription : subscriptions) {
+
+      if (subscription.getMethod().equals("Text")) {
+
+        String header = subscription.getHeader();
+        List<NewsArticle> articles = NewsArticleDB.getArticles(subscription);
+
+        if (articles.size() > 0) {
+          content += "<h3><u>" + header + "</u></h3><ul>";
+          for (NewsArticle article : articles) {
+            content += "<li>" + article.getHtml() + "</li>";
+          }
+          content += "</ul>";
+        }
+      }
+    }
+
+    return content;
+  }
 
   /**
    * Gets the list of articles as an HTML document.
    * @param user The user.
    * @return The message content as an HTML document.
    */
-  private static String getHtmlContent(UserInfo user) {
+  private static String getEmailHtml(UserInfo user) {
 
-    String content = "<h3>Aloha " + user.getFirstName() + ",<br><br>Here are the news articles you've requested:</h3>";
+    String content = "<h2>Aloha " + user.getFirstName() + ",<br><br>Here are the news articles you've requested:</h2>";
 
     List<NewsServicesSubscription> subscriptions = NewsServiceSubscriptionDB.getSubscriptions(user.getEmail());
     for (NewsServicesSubscription subscription : subscriptions) {
-      String header = subscription.getHeader();
-      List<NewsArticle> articles = NewsArticleDB.getArticles(subscription);
 
-      if (articles.size() > 0) {
-        content += "<h3>" + header + "</h3><ul>";
-        for (NewsArticle article : articles) {
-          content += "<li>" + article.getHtml() + "</li>";
+      if (subscription.getMethod().equals("Email")) {
+
+        String header = subscription.getHeader();
+        List<NewsArticle> articles = NewsArticleDB.getArticles(subscription);
+
+        if (articles.size() > 0) {
+          content += "<h3><u>" + header + "</u></h3><ul>";
+          for (NewsArticle article : articles) {
+            content += "<li>" + article.getHtml() + "</li>";
+          }
+          content += "</ul>";
         }
-        content += "</ul>";
       }
     }
 
-    return "<html>" + content + "</html>";
-
+    return content;
   }
 
 

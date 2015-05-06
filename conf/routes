@@ -22,6 +22,9 @@ POST        /news                   controllers.Application.updateNewsSubscripti
 POST        /account                controllers.Application.updateUserInfo()
 
 GET         /deletenewssubscription controllers.Application.deleteNewsSubscription(id: Long?= 0)
+GET         /demosennewsarticles    controllers.Application.demoSendNewsArticles()
+
+GET         /viewmyarticles         controllers.Application.viewMyArticles(id: Long?= 0)
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file           controllers.Assets.at(path="/public", file)
