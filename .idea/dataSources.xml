@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="1650038370">
+    <data-source source="LOCAL" name="PostgreSQL - notify_hawaii@localhost" uuid="ce9d61d6-3c1d-4df6-b32f-b432d9c11de0">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/notify_hawaii</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>

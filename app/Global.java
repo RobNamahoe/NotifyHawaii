@@ -17,7 +17,7 @@ public class Global extends GlobalSettings {
   public void onStart(Application application) {
     super.onStart(application);
 
-    ArrayList<NewsArticle> list;
+    //ArrayList<NewsArticle> list;
 
     //SendEmail.testmail("", "", "");
 
@@ -41,6 +41,7 @@ public class Global extends GlobalSettings {
 
     // Initialize the database
 
+    /*
     addCarriers();
 
     if (!UserInfoDB.isUser("admin@notifyhawaii.com")) {
@@ -54,6 +55,7 @@ public class Global extends GlobalSettings {
      // NewsServiceSubscriptionDB.addSubscription(1, data);
 
     }
+    */
   }
 
   /**
