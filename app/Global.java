@@ -17,31 +17,7 @@ public class Global extends GlobalSettings {
   public void onStart(Application application) {
     super.onStart(application);
 
-    //ArrayList<NewsArticle> list;
-
-    //SendEmail.testmail("", "", "");
-
-    //HonoluluStarAdvertiser.getBreakingArticles();
-    //HonoluluStarAdvertiser.getPopularArticles();
-    //HonoluluStarAdvertiser.getSportsArticles();
-
-    //list = MauiNews.getLocalNewsArticles();
-    //list = MauiNews.getBreakingNewsArticles();
-    //list = MauiNews.getBusinessNewsArticles();
-
-    //list = CivilBeat.getDevelopmentArticles();
-    //list = CivilBeat.getEducationArticles();
-    //list = CivilBeat.getEnergyAndEnvironmentArticles();
-    //list = CivilBeat.getHawaiiArticles();
-    //list = CivilBeat.getHonoluluArticles();
-    //list = CivilBeat.getPoliticsArticles();
-    //list = CivilBeat.getPopularArticles();
-
-    //printList(list);
-
     // Initialize the database
-
-    /*
     addCarriers();
 
     if (!UserInfoDB.isUser("admin@notifyhawaii.com")) {
@@ -50,12 +26,8 @@ public class Global extends GlobalSettings {
     UserInfo user = new UserInfo("Notify", "Hawaii", "8085551234", "admin@notifyhawaii.com", carrier, "password");
     UserInfoDB.addUser(user);
 
-      //NewsServicesFormData formData = new NewsServicesFormData();
-    //  NewsServicesSubscription data = new NewsServicesSubscription(formData);
-     // NewsServiceSubscriptionDB.addSubscription(1, data);
-
     }
-    */
+
   }
 
   /**
