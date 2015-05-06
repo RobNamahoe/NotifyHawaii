@@ -13,8 +13,11 @@
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.11/resource_managed/main" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.11/resource_managed/test" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../test/resources" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/../../target/native_libraries" />
       <excludeFolder url="file://$MODULE_DIR$/../../target/resolution-cache" />
       <excludeFolder url="file://$MODULE_DIR$/../../target/streams" />
+      <excludeFolder url="file://$MODULE_DIR$/../../target/test-reports" />
+      <excludeFolder url="file://$MODULE_DIR$/../../target/web" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -135,26 +138,6 @@
     <orderEntry type="library" scope="TEST" name="SBT: xalan:xalan:2.7.1:jar" level="project" />
     <orderEntry type="library" name="SBT: xerces:xercesImpl:2.11.0:jar" level="project" />
     <orderEntry type="library" name="SBT: xml-apis:xml-apis:1.4.01:jar" level="project" />
-    <orderEntry type="module-library">
-      <library name="SBT: unmanaged-jars">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../lib/commons-email-1.3.3.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../lib/jaunt0.9.9.8.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../lib/mail.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../lib/commons-email-1.3.3.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../lib/jaunt0.9.9.8.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../lib/mail.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../lib/commons-email-1.3.3.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../lib/jaunt0.9.9.8.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../lib/mail.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../lib/commons-email-1.3.3.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../lib/jaunt0.9.9.8.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../lib/mail.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="SBT: org.postgresql:postgresql:9.3-1102-jdbc4:jar" level="project" />
     <orderEntry type="library" name="SBT: commons-logging:commons-logging:1.1.1:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="SBT: commons-logging:commons-logging:1.1.3:jar" level="project" />
@@ -164,9 +147,11 @@
     <orderEntry type="library" scope="TEST" name="SBT: org.apache.httpcomponents:httpcore:4.3:jar" level="project" />
     <orderEntry type="library" name="SBT: org.scala-lang:scala-library:2.11.1:jar" level="project" />
     <orderEntry type="module-library">
-      <library>
+      <library name="SBT: unmanaged-jars">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../lib/jaunt0.9.9.9.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../lib/commons-email-1.3.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../lib/mail.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
